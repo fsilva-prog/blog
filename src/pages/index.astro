@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+import { articulosDerecho, entregasEnsayo, fechaTexto } from '../lib/contenido.js';
+
+const derecho = (await articulosDerecho()).slice(0, 3);
+const entregas = await entregasEnsayo();
+const ultimaEntrega = entregas.at(-1);
+---
+
+<Base>
+  <section class="intro">
+    <h1>Felipe Silva Landeros</h1>
+    <p>
+      Abogado. Escribo sobre dos cosas que rara vez conversan: el derecho tal como
+      se cumple en la práctica, y las preguntas que deja abiertas la ciencia cuando
+      se la mira junto al símbolo.
+    </p>
+  </section>
+
+  <section class="bloque">
+    <p class="kicker">Ensayo por entregas</p>
+    <h2><a href="/la-luz/">La luz, guardián del universo</a></h2>
+    <p class="muted">
+      Un recorrido entre la física y el símbolo: la luz como límite, archivo y
+      mensajera del universo.
+    </p>
+    {ultimaEntrega ? (
+      <p class="meta">
+        Última entrega: <a href={`/la-luz/${ultimaEntrega.id}/`}>{ultimaEntrega.data.entrega}. {ultimaEntrega.data.titulo}</a>
+      </p>
+    ) : (
+      <p class="meta">Primera entrega próximamente.</p>
+    )}
+  </section>
+
+  <section class="bloque">
+    <p class="kicker">Norma y Proceso</p>
+    <h2><a href="/derecho/">La norma no se cumple con criterio. Se cumple con proceso.</a></h2>
+    <ul class="lista compacta">
+      {derecho.map((a) => (
+        <li>
+          <a href={`/derecho/${a.id}/`}>{a.data.titulo}</a>
+          <span class="meta"> · {fechaTexto(a.data.fecha)}{a.data.borrador && ' · borrador'}</span>
+        </li>
+      ))}
+    </ul>
+    {derecho.length === 0 && <p class="meta">Primer artículo próximamente.</p>}
+  </section>
+</Base>

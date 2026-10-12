@@ -1,0 +1,34 @@
+---
+import Base from '../../layouts/Base.astro';
+import { entregasEnsayo, fechaTexto } from '../../lib/contenido.js';
+
+const entregas = await entregasEnsayo();
+---
+
+<Base title="La luz, guardián del universo" description="Ensayo por entregas sobre la luz como límite, archivo y mensajera del universo.">
+  <section class="intro serie">
+    <p class="kicker">Ensayo por entregas</p>
+    <h1>La luz, guardián del universo</h1>
+    <blockquote class="epigrafe">
+      <p>Lo que está abajo es como lo que está arriba, y lo que está arriba es como lo que está abajo.</p>
+      <cite>Tabla Esmeralda</cite>
+    </blockquote>
+    <p>
+      Un recorrido que cruza dos lenguajes: el de la ciencia, que mide, y el del
+      símbolo, que lleva milenios intuyendo. Se publica por partes; cada entrega
+      puede leerse sola, pero el sentido completo está en el camino.
+    </p>
+  </section>
+
+  <ol class="lista entregas">
+    {entregas.map((e) => (
+      <li>
+        <p class="kicker">Entrega {e.data.entrega} · {e.data.parte}{e.data.borrador && ' · borrador'}</p>
+        <h2><a href={`/la-luz/${e.id}/`}>{e.data.titulo}</a></h2>
+        <p>{e.data.bajada}</p>
+        {e.data.fecha && <p class="meta">{fechaTexto(e.data.fecha)}</p>}
+      </li>
+    ))}
+  </ol>
+  {entregas.length === 0 && <p class="meta">La primera entrega se publicará pronto.</p>}
+</Base>

@@ -1,0 +1,31 @@
+---
+import Base from './Base.astro';
+import { fechaTexto } from '../lib/contenido.js';
+
+// Plantilla común para un artículo de derecho y para una entrega del ensayo.
+const { kicker, titulo, bajada, fecha, lectura, borrador } = Astro.props;
+---
+
+<Base title={titulo} description={bajada}>
+  <article class="articulo">
+    {borrador && <p class="aviso-borrador">Borrador: solo lo ves tú, no se publica.</p>}
+    <header class="articulo-head">
+      <p class="kicker">{kicker}</p>
+      <h1>{titulo}</h1>
+      {bajada && <p class="bajada">{bajada}</p>}
+      <p class="meta">
+        {fecha && <time datetime={fecha.toISOString().slice(0, 10)}>{fechaTexto(fecha)}</time>}
+        {fecha && lectura && <span> · </span>}
+        {lectura && <span>{lectura} de lectura</span>}
+      </p>
+    </header>
+
+    <div class="prosa">
+      <slot />
+    </div>
+
+    <footer class="articulo-pie">
+      <slot name="pie" />
+    </footer>
+  </article>
+</Base>

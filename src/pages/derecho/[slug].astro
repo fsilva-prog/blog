@@ -1,0 +1,31 @@
+---
+import { render } from 'astro:content';
+import Articulo from '../../layouts/Articulo.astro';
+import { articulosDerecho } from '../../lib/contenido.js';
+
+export async function getStaticPaths() {
+  const articulos = await articulosDerecho();
+  return articulos.map((a) => ({ params: { slug: a.id }, props: { a } }));
+}
+
+const { a } = Astro.props;
+const { Content } = await render(a);
+---
+
+<Articulo
+  kicker={`Norma y Proceso · ${a.data.tema}`}
+  titulo={a.data.titulo}
+  bajada={a.data.bajada}
+  fecha={a.data.fecha}
+  lectura={a.data.lectura}
+  borrador={a.data.borrador}
+>
+  <Content />
+  <Fragment slot="pie">
+    <p class="muted">
+      Este contenido es de carácter general y no constituye asesoría legal ni
+      tributaria para un caso particular.
+    </p>
+    <p><a href="/derecho/">← Volver a Norma y Proceso</a></p>
+  </Fragment>
+</Articulo>

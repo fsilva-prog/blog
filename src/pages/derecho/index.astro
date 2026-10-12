@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import { articulosDerecho, fechaTexto } from '../../lib/contenido.js';
+
+const articulos = await articulosDerecho();
+---
+
+<Base title="Norma y Proceso" description="Derecho tributario y cumplimiento: dónde la norma se rompe al llevarla a la práctica.">
+  <section class="intro">
+    <p class="kicker">Norma y Proceso</p>
+    <h1>La norma no se cumple con criterio. Se cumple con proceso.</h1>
+    <p>
+      Notas sobre derecho tributario, cumplimiento y los lugares donde la teoría
+      se rompe al llevarla a volumen.
+    </p>
+  </section>
+
+  <ul class="lista">
+    {articulos.map((a) => (
+      <li>
+        <p class="kicker">{a.data.tema}{a.data.borrador && ' · borrador'}</p>
+        <h2><a href={`/derecho/${a.id}/`}>{a.data.titulo}</a></h2>
+        <p>{a.data.bajada}</p>
+        <p class="meta">
+          {fechaTexto(a.data.fecha)}{a.data.lectura && ` · ${a.data.lectura} de lectura`}
+        </p>
+      </li>
+    ))}
+  </ul>
+</Base>

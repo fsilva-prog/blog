@@ -1,0 +1,142 @@
+/* Colores y tipografía: cambia aquí y se aplica a todo el sitio. */
+:root {
+  --tinta: #1a1a1a;
+  --tinta-suave: #5c5c5c;
+  --acento: #8a1c2b;
+  --linea: #e2ddd7;
+  --papel: #fbfaf8;
+  --papel-2: #f3f0ec;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--acento); }
+
+.wrap { width: 100%; max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.muted { color: var(--tinta-suave); }
+
+/* Cabecera */
+.site-header {
+  border-bottom: 1px solid var(--linea);
+  padding: 20px 0;
+  margin-bottom: 56px;
+  background: #fff;
+}
+.site-header .wrap {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 12px 24px; flex-wrap: wrap;
+}
+.brand { font-size: 20px; font-weight: 600; color: var(--tinta); text-decoration: none; letter-spacing: -0.01em; }
+.site-header nav { font-family: var(--sans); font-size: 14px; display: flex; gap: 20px; flex-wrap: wrap; }
+.site-header nav a {
+  color: var(--tinta-suave); text-decoration: none;
+  border-bottom: 1px solid transparent; padding-bottom: 2px;
+}
+.site-header nav a:hover, .site-header nav a.activo { color: var(--tinta); border-bottom-color: var(--acento); }
+
+/* Portadas */
+.intro { margin-bottom: 52px; padding-bottom: 32px; border-bottom: 1px solid var(--linea); }
+.intro h1 { font-size: 34px; line-height: 1.25; margin: 0 0 18px; letter-spacing: -0.02em; }
+.intro p { color: var(--tinta-suave); margin: 0; }
+
+.bloque { margin-bottom: 48px; }
+.bloque h2 { font-size: 25px; line-height: 1.3; margin: 0 0 10px; }
+.bloque h2 a, .lista h2 a { color: var(--tinta); text-decoration: none; }
+.bloque h2 a:hover, .lista h2 a:hover { color: var(--acento); }
+.bloque p { margin: 0 0 8px; }
+
+.epigrafe {
+  margin: 0 0 24px; padding: 2px 0 2px 20px;
+  border-left: 2px solid var(--acento); font-style: italic; color: var(--tinta-suave);
+}
+.epigrafe p { margin: 0 0 6px; }
+.epigrafe cite { font-family: var(--sans); font-style: normal; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+.lista { list-style: none; padding: 0; margin: 0; }
+.lista li { padding-bottom: 32px; margin-bottom: 32px; border-bottom: 1px solid var(--linea); }
+.lista li:last-child { border-bottom: none; }
+.lista h2 { font-size: 25px; line-height: 1.3; margin: 0 0 10px; letter-spacing: -0.01em; }
+.lista p { margin: 0 0 8px; color: var(--tinta-suave); }
+.lista.compacta li { padding-bottom: 10px; margin-bottom: 10px; }
+
+/* Etiquetas */
+.kicker {
+  font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.11em;
+  text-transform: uppercase; color: var(--acento); font-weight: 600; margin: 0 0 10px;
+}
+.meta { font-family: var(--sans); font-size: 13px; color: var(--tinta-suave); margin: 0; }
+
+.aviso-borrador {
+  font-family: var(--sans); font-size: 13px; background: #fff4d6;
+  border: 1px solid #ecd9a0; padding: 8px 12px; border-radius: 4px; margin: 0 0 28px;
+}
+
+/* Artículo */
+.articulo-head { margin-bottom: 40px; padding-bottom: 26px; border-bottom: 1px solid var(--linea); }
+.articulo-head h1 { font-size: 36px; line-height: 1.2; letter-spacing: -0.022em; margin: 0 0 16px; }
+.bajada { font-size: 21px; line-height: 1.55; color: var(--tinta-suave); margin: 0 0 18px; }
+
+.prosa { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.prosa p { margin: 0 0 22px; }
+.prosa h2 { font-size: 26px; line-height: 1.3; margin: 52px 0 18px; letter-spacing: -0.015em; text-align: left; }
+.prosa h3 { font-size: 20px; margin: 36px 0 12px; font-weight: 600; text-align: left; }
+.prosa ul, .prosa ol { margin: 0 0 22px; padding-left: 24px; }
+.prosa li { margin-bottom: 9px; }
+.prosa a { text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.prosa blockquote {
+  margin: 30px 0; padding: 4px 0 4px 22px;
+  border-left: 3px solid var(--acento); color: var(--tinta-suave); font-style: italic;
+}
+.prosa hr { border: none; border-top: 1px solid var(--linea); margin: 44px 0; }
+.prosa strong { font-weight: 600; }
+
+/* Pie de artículo */
+.articulo-pie {
+  margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--linea);
+  font-family: var(--sans); font-size: 15px; line-height: 1.6;
+}
+.articulo-pie p { margin: 0 0 12px; }
+.articulo-pie a { text-decoration: none; }
+.articulo-pie a:hover { text-decoration: underline; }
+.entre-entregas { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+
+/* Pie del sitio */
+.site-footer {
+  margin-top: 90px; padding: 28px 0 48px; border-top: 1px solid var(--linea);
+  font-family: var(--sans); font-size: 13.5px; color: var(--tinta-suave); background: #fff;
+}
+.site-footer p { margin: 0; }
+
+@media (max-width: 640px) {
+  body { font-size: 18px; }
+  .articulo-head h1 { font-size: 29px; }
+  .intro h1 { font-size: 27px; }
+  .bajada { font-size: 19px; }
+  .prosa h2 { font-size: 23px; }
+  .site-header { margin-bottom: 36px; }
+}
+
+/* Separador de parte dentro de una entrega del ensayo */
+.prosa .parte {
+  font-family: var(--sans); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--tinta-suave); text-align: center; margin: 56px 0 8px;
+}
+
+/* En pantallas angostas el texto justificado abre huecos: se alinea a la izquierda. */
+.prosa blockquote { text-align: left; }
+@media (max-width: 640px) {
+  .prosa { text-align: left; }
+}

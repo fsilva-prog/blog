@@ -1,0 +1,34 @@
+---
+import { render } from 'astro:content';
+import Articulo from '../../layouts/Articulo.astro';
+import { entregasEnsayo } from '../../lib/contenido.js';
+
+export async function getStaticPaths() {
+  const entregas = await entregasEnsayo();
+  return entregas.map((e, i) => ({
+    params: { slug: e.id },
+    props: { e, anterior: entregas[i - 1], siguiente: entregas[i + 1] },
+  }));
+}
+
+const { e, anterior, siguiente } = Astro.props;
+const { Content } = await render(e);
+---
+
+<Articulo
+  kicker={`La luz, guardián del universo · Entrega ${e.data.entrega} · ${e.data.parte}`}
+  titulo={e.data.titulo}
+  bajada={e.data.bajada}
+  fecha={e.data.fecha}
+  lectura={e.data.lectura}
+  borrador={e.data.borrador}
+>
+  <Content />
+  <Fragment slot="pie">
+    <nav class="entre-entregas">
+      {anterior ? <a href={`/la-luz/${anterior.id}/`}>← {anterior.data.entrega}. {anterior.data.titulo}</a> : <span></span>}
+      {siguiente ? <a href={`/la-luz/${siguiente.id}/`}>{siguiente.data.entrega}. {siguiente.data.titulo} →</a> : <span class="muted">Continuará.</span>}
+    </nav>
+    <p><a href="/la-luz/">Todas las entregas</a></p>
+  </Fragment>
+</Articulo>

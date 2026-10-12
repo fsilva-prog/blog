@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+
+const { title, description } = Astro.props;
+const nombre = 'Felipe Silva Landeros';
+const fullTitle = title ? `${title} · ${nombre}` : nombre;
+const desc = description || 'Derecho, ciencia y símbolo. Textos de Felipe Silva Landeros.';
+const ruta = Astro.url.pathname;
+const activo = (p) => (ruta.startsWith(p) ? 'activo' : '');
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={desc} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:type" content="article" />
+    <link rel="canonical" href={Astro.url.href} />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a href="/" class="brand">{nombre}</a>
+        <nav>
+          <a href="/derecho/" class={activo('/derecho')}>Norma y Proceso</a>
+          <a href="/la-luz/" class={activo('/la-luz')}>La luz</a>
+          <a href="/acerca/" class={activo('/acerca')}>Acerca</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>Felipe Silva Landeros · Puerto Montt</p>
+      </div>
+    </footer>
+  </body>
+</html>
