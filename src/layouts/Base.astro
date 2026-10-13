@@ -39,6 +39,7 @@ const activo = (p) => (ruta.startsWith(p) ? 'activo' : '');
           <a href="/derecho/" class={activo('/derecho')}>Norma y Proceso</a>
           <a href="/catedra/" class={activo('/catedra')}>Cátedra</a>
           <a href="/acerca/" class={activo('/acerca')}>Acerca</a>
+          <a href="/acerca/#contacto" class="nav-contacto">Contacto</a>
         </nav>
       </div>
     </header>
@@ -69,7 +70,7 @@ const activo = (p) => (ruta.startsWith(p) ? 'activo' : '');
 
     <footer class="site-footer">
       <div class="wrap pie">
-        <p>Felipe Silva Landeros</p>
+        <p>Felipe Silva Landeros · <a href="/acerca/#contacto">Escríbeme</a></p>
         <p class="lugar">Puerto Montt · 41°28′ S</p>
       </div>
     </footer>

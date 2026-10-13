@@ -426,3 +426,18 @@ a:focus-visible { outline: 2px solid var(--oro); outline-offset: 3px; }
 .contacto button:disabled { opacity: 0.6; cursor: wait; }
 .contacto .trampa { display: none; }
 .contacto-estado { font-family: var(--sans); font-size: 0.95rem; color: var(--tinta-suave); min-height: 1.4em; margin: 0.5rem 0 0 !important; }
+
+/* Accesos visibles al contacto */
+.site-header nav a.nav-contacto {
+  color: var(--papel); background: var(--tinta); padding: 0.3rem 0.8rem; border-radius: 4px; border-bottom: none;
+}
+.site-header nav a.nav-contacto:hover { background: var(--lacre); color: var(--papel); }
+.seccion-luz .site-header nav a.nav-contacto { background: var(--oro-noche); color: var(--noche); }
+.acciones-inicio { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.boton-contacto {
+  font-family: var(--sans); font-size: 0.95rem; text-decoration: none; color: var(--papel);
+  background: var(--tinta); padding: 0.6rem 1.1rem; border-radius: 4px;
+}
+.boton-contacto:hover { background: var(--lacre); }
+.pie a { color: inherit; }
+#contacto { scroll-margin-top: 2rem; }
