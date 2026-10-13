@@ -2,25 +2,51 @@
 import Base from './Base.astro';
 import { fechaTexto } from '../lib/contenido.js';
 
-// Plantilla común para un artículo de derecho y para una entrega del ensayo.
-const { kicker, titulo, bajada, fecha, lectura, borrador } = Astro.props;
+// Plantilla común. variante="luz" usa la cabecera nocturna del ensayo.
+const { kicker, titulo, bajada, fecha, lectura, borrador, imagen, variante = 'papel' } = Astro.props;
+const esLuz = variante === 'luz';
 ---
 
-<Base title={titulo} description={bajada}>
-  <article class="articulo">
-    {borrador && <p class="aviso-borrador">Borrador: solo lo ves tú, no se publica.</p>}
-    <header class="articulo-head">
-      <p class="kicker">{kicker}</p>
-      <h1>{titulo}</h1>
-      {bajada && <p class="bajada">{bajada}</p>}
-      <p class="meta">
-        {fecha && <time datetime={fecha.toISOString().slice(0, 10)}>{fechaTexto(fecha)}</time>}
-        {fecha && lectura && <span> · </span>}
-        {lectura && <span>{lectura} de lectura</span>}
-      </p>
+<Base title={titulo} description={bajada} imagen={imagen} lateral={!esLuz} seccion={esLuz ? 'seccion-luz' : variante === 'catedra' ? 'seccion-catedra' : 'seccion-papel'}>
+  {esLuz && <div class="progreso" aria-hidden="true"><span></span></div>}
+  {esLuz && (
+    <header slot="portada" class="noche">
+      <div class="wrap">
+        {borrador && <p class="aviso-borrador">Borrador: no se publica.</p>}
+        <p class="etiqueta">{kicker}</p>
+        <h1 class="titulo-noche">{titulo}</h1>
+        {bajada && <p class="bajada-noche">{bajada}</p>}
+        <p class="meta-noche">
+          {fecha && <time datetime={fecha.toISOString().slice(0, 10)}>{fechaTexto(fecha)}</time>}
+          {fecha && lectura && <span> · </span>}
+          {lectura && <span>{lectura} de lectura</span>}
+        </p>
+      </div>
     </header>
+  )}
 
-    <div class="prosa">
+  <article class="articulo">
+    {!esLuz && (
+      <header class="articulo-head">
+        {borrador && <p class="aviso-borrador">Borrador: no se publica.</p>}
+        <p class="etiqueta">{kicker}</p>
+        <h1>{titulo}</h1>
+        {bajada && <p class="bajada">{bajada}</p>}
+        <p class="meta">
+          {fecha && <time datetime={fecha.toISOString().slice(0, 10)}>{fechaTexto(fecha)}</time>}
+          {fecha && lectura && <span> · </span>}
+          {lectura && <span>{lectura} de lectura</span>}
+        </p>
+      </header>
+    )}
+
+    {imagen && (
+      <figure class="ilustracion">
+        <img src={imagen.replace(/\.png$/, '.svg')} alt="" width="1200" height="630" />
+      </figure>
+    )}
+
+    <div class:list={['prosa', { 'prosa-luz': esLuz }]}>
       <slot />
     </div>
 
@@ -28,4 +54,22 @@ const { kicker, titulo, bajada, fecha, lectura, borrador } = Astro.props;
       <slot name="pie" />
     </footer>
   </article>
+  {esLuz && (
+    <script is:inline>
+      (() => {
+        const barra = document.querySelector('.progreso span');
+        if (!barra) return;
+        const art = document.querySelector('.prosa');
+        const actualizar = () => {
+          const r = art.getBoundingClientRect();
+          const total = r.height - window.innerHeight;
+          const p = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 1;
+          barra.style.transform = `scaleX(${p})`;
+        };
+        addEventListener('scroll', actualizar, { passive: true });
+        addEventListener('resize', actualizar);
+        actualizar();
+      })();
+    </script>
+  )}
 </Base>

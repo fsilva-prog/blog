@@ -1,7 +1,7 @@
 ---
 import { render } from 'astro:content';
 import Articulo from '../../layouts/Articulo.astro';
-import { entregasEnsayo } from '../../lib/contenido.js';
+import { entregasEnsayo, TOTAL_ENTREGAS } from '../../lib/contenido.js';
 
 export async function getStaticPaths() {
   const entregas = await entregasEnsayo();
@@ -16,19 +16,25 @@ const { Content } = await render(e);
 ---
 
 <Articulo
-  kicker={`La luz, guardián del universo · Entrega ${e.data.entrega} · ${e.data.parte}`}
+  variante="luz"
+  kicker={`Entrega ${e.data.entrega} de ${TOTAL_ENTREGAS} · ${e.data.parte}`}
   titulo={e.data.titulo}
   bajada={e.data.bajada}
   fecha={e.data.fecha}
   lectura={e.data.lectura}
   borrador={e.data.borrador}
+  imagen={e.data.imagen}
 >
   <Content />
   <Fragment slot="pie">
-    <nav class="entre-entregas">
-      {anterior ? <a href={`/la-luz/${anterior.id}/`}>← {anterior.data.entrega}. {anterior.data.titulo}</a> : <span></span>}
-      {siguiente ? <a href={`/la-luz/${siguiente.id}/`}>{siguiente.data.entrega}. {siguiente.data.titulo} →</a> : <span class="muted">Continuará.</span>}
+    <nav class="entre-entregas" aria-label="Entregas">
+      {anterior
+        ? <a href={`/la-luz/${anterior.id}/`}><small>Anterior</small>{anterior.data.titulo}</a>
+        : <span></span>}
+      {siguiente
+        ? <a class="sig" href={`/la-luz/${siguiente.id}/`}><small>Siguiente</small>{siguiente.data.titulo}</a>
+        : <span class="sig continuara"><small>Siguiente</small>Continuará</span>}
     </nav>
-    <p><a href="/la-luz/">Todas las entregas</a></p>
+    <p><a href="/la-luz/">Índice del ensayo</a></p>
   </Fragment>
 </Articulo>

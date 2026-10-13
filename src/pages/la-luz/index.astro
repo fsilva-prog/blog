@@ -1,34 +1,57 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { entregasEnsayo, fechaTexto } from '../../lib/contenido.js';
+import { entregasEnsayo, fechaTexto, TOTAL_ENTREGAS } from '../../lib/contenido.js';
 
 const entregas = await entregasEnsayo();
+const pendientes = Math.max(0, TOTAL_ENTREGAS - entregas.length);
 ---
 
-<Base title="La luz, guardián del universo" description="Ensayo por entregas sobre la luz como límite, archivo y mensajera del universo.">
-  <section class="intro serie">
-    <p class="kicker">Ensayo por entregas</p>
-    <h1>La luz, guardián del universo</h1>
-    <blockquote class="epigrafe">
-      <p>Lo que está abajo es como lo que está arriba, y lo que está arriba es como lo que está abajo.</p>
-      <cite>Tabla Esmeralda</cite>
-    </blockquote>
+<Base
+  title="La luz, guardián del universo"
+  description="Libro en curso sobre la luz como límite, archivo y mensajera del universo."
+  seccion="seccion-luz"
+  lateral={false}
+>
+  <header slot="portada" class="noche noche-alta">
+    <div class="wrap">
+      <p class="etiqueta">Libro en curso</p>
+      <h1 class="titulo-noche grande">La luz, guardián del universo</h1>
+      <blockquote class="epigrafe">
+        <p>Lo que está abajo es como lo que está arriba, y lo que está arriba es como lo que está abajo.</p>
+        <cite>Tabla Esmeralda</cite>
+      </blockquote>
+    </div>
+  </header>
+
+  <section class="serie-intro">
     <p>
       Un recorrido que cruza dos lenguajes: el de la ciencia, que mide, y el del
       símbolo, que lleva milenios intuyendo. Se publica por partes; cada entrega
       puede leerse sola, pero el sentido completo está en el camino.
     </p>
+    <p class="meta">{entregas.length} de {TOTAL_ENTREGAS} entregas publicadas</p>
   </section>
 
-  <ol class="lista entregas">
+  <ol class="indice">
     {entregas.map((e) => (
       <li>
-        <p class="kicker">Entrega {e.data.entrega} · {e.data.parte}{e.data.borrador && ' · borrador'}</p>
-        <h2><a href={`/la-luz/${e.id}/`}>{e.data.titulo}</a></h2>
-        <p>{e.data.bajada}</p>
-        {e.data.fecha && <p class="meta">{fechaTexto(e.data.fecha)}</p>}
+        <a href={`/la-luz/${e.id}/`}>
+          <span class="indice-num">{e.data.entrega}</span>
+          <span class="indice-cuerpo">
+            {e.data.imagen && <img class="indice-img" src={e.data.imagen.replace(/\.png$/, '.svg')} alt="" width="1200" height="630" loading="lazy" />}
+            <span class="indice-parte">{e.data.parte}{e.data.borrador && ' · borrador'}</span>
+            <span class="indice-titulo">{e.data.titulo}</span>
+            <span class="indice-bajada">{e.data.bajada}</span>
+            {e.data.fecha && <span class="meta">{fechaTexto(e.data.fecha)}</span>}
+          </span>
+        </a>
+      </li>
+    ))}
+    {Array.from({ length: pendientes }, (_, i) => (
+      <li class="pendiente">
+        <span class="indice-num">{entregas.length + i + 1}</span>
+        <span class="indice-cuerpo"><span class="indice-parte">Próximamente</span></span>
       </li>
     ))}
   </ol>
-  {entregas.length === 0 && <p class="meta">La primera entrega se publicará pronto.</p>}
 </Base>

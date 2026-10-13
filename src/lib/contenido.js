@@ -9,6 +9,11 @@ export async function articulosDerecho() {
   return todos.sort((a, b) => b.data.fecha - a.data.fecha);
 }
 
+export async function textosCatedra() {
+  const todos = await getCollection('catedra', visible);
+  return todos.sort((a, b) => b.data.fecha - a.data.fecha);
+}
+
 export async function entregasEnsayo() {
   const todas = await getCollection('ensayo', visible);
   return todas.sort((a, b) => a.data.entrega - b.data.entrega);
@@ -20,3 +25,6 @@ export function fechaTexto(fecha) {
     day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC',
   });
 }
+
+// Cantidad total de entregas planificadas del ensayo.
+export const TOTAL_ENTREGAS = 9;

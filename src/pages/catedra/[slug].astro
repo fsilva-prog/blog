@@ -1,0 +1,29 @@
+---
+import { render } from 'astro:content';
+import Articulo from '../../layouts/Articulo.astro';
+import { textosCatedra } from '../../lib/contenido.js';
+
+export async function getStaticPaths() {
+  const textos = await textosCatedra();
+  return textos.map((t) => ({ params: { slug: t.id }, props: { t } }));
+}
+
+const { t } = Astro.props;
+const { Content } = await render(t);
+---
+
+<Articulo
+  variante="catedra"
+  kicker={`Cátedra · ${t.data.tipo}`}
+  titulo={t.data.titulo}
+  bajada={t.data.bajada}
+  fecha={t.data.fecha}
+  lectura={t.data.lectura}
+  borrador={t.data.borrador}
+>
+  <Content />
+  <Fragment slot="pie">
+    <p class="muted">Material docente de la cátedra de Derecho Societario, Universidad San Sebastián.</p>
+    <p><a href="/catedra/">← Volver a Cátedra</a></p>
+  </Fragment>
+</Articulo>

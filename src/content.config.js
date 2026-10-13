@@ -10,6 +10,7 @@ const derecho = defineCollection({
     tema: z.string(),
     fecha: z.coerce.date(),
     lectura: z.string().optional(),
+    imagen: z.string().optional(),
     borrador: z.boolean().default(false),
   }),
 });
@@ -24,8 +25,22 @@ const ensayo = defineCollection({
     parte: z.string(),
     fecha: z.coerce.date().optional(),
     lectura: z.string().optional(),
+    imagen: z.string().optional(),
     borrador: z.boolean().default(false),
   }),
 });
 
-export const collections = { derecho, ensayo };
+// Sección "Cátedra": apuntes de clases y papers.
+const catedra = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/catedra' }),
+  schema: z.object({
+    titulo: z.string(),
+    bajada: z.string(),
+    tipo: z.string(),               // por ejemplo: "Apunte de clase" o "Paper"
+    fecha: z.coerce.date(),
+    lectura: z.string().optional(),
+    borrador: z.boolean().default(false),
+  }),
+});
+
+export const collections = { derecho, ensayo, catedra };

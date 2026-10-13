@@ -1,7 +1,8 @@
 ---
 import '../styles/global.css';
 
-const { title, description } = Astro.props;
+const { title, description, seccion = '', imagen, lateral = true } = Astro.props;
+const imagenAbs = imagen ? new URL(imagen, Astro.site ?? Astro.url).href : undefined;
 const nombre = 'Felipe Silva Landeros';
 const fullTitle = title ? `${title} · ${nombre}` : nombre;
 const desc = description || 'Derecho, ciencia y símbolo. Textos de Felipe Silva Landeros.';
@@ -19,27 +20,57 @@ const activo = (p) => (ruta.startsWith(p) ? 'activo' : '');
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={desc} />
     <meta property="og:type" content="article" />
+    {imagenAbs && <meta property="og:image" content={imagenAbs} />}
+    {imagenAbs && <meta name="twitter:card" content="summary_large_image" />}
     <link rel="canonical" href={Astro.url.href} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans+Condensed:wght@400;500&display=swap"
+    />
   </head>
-  <body>
+  <body class={seccion}>
     <header class="site-header">
-      <div class="wrap">
-        <a href="/" class="brand">{nombre}</a>
-        <nav>
-          <a href="/derecho/" class={activo('/derecho')}>Norma y Proceso</a>
+      <div class="wrap barra">
+        <a href="/" class="brand">Felipe Silva Landeros</a>
+        <nav aria-label="Secciones">
           <a href="/la-luz/" class={activo('/la-luz')}>La luz</a>
+          <a href="/derecho/" class={activo('/derecho')}>Norma y Proceso</a>
+          <a href="/catedra/" class={activo('/catedra')}>Cátedra</a>
           <a href="/acerca/" class={activo('/acerca')}>Acerca</a>
         </nav>
       </div>
     </header>
 
-    <main class="wrap">
-      <slot />
-    </main>
+    <slot name="portada" />
+
+    <div class:list={["wrap", "cuerpo", { "sin-lateral": !lateral }]}>
+      <main class="principal">
+        <slot />
+      </main>
+      {lateral && (
+      <aside class="lateral" aria-label="Mi primer proyecto">
+        <p class="etiqueta">Mi primer proyecto</p>
+        <a class="lateral-logo" href="https://www.simplificalo.cl" rel="noopener"><img src="/img/simplificalo.png" alt="Simplificalo" width="900" height="252" /></a>
+        <p>
+          Fundé Simplificalo, una plataforma chilena que automatiza la contabilidad
+          y el cumplimiento tributario de pequeñas y medianas empresas: declaraciones,
+          facturación, conciliación bancaria y un portal propio para cada cliente.
+        </p>
+        <p>
+          Muchas de las ideas de Norma y Proceso nacen ahí, de ver qué ocurre cuando
+          una norma se aplica doscientas veces al mes.
+        </p>
+        <a class="lateral-enlace" href="https://www.simplificalo.cl" rel="noopener">Conocer Simplificalo →</a>
+      </aside>
+      )}
+    </div>
 
     <footer class="site-footer">
-      <div class="wrap">
-        <p>Felipe Silva Landeros · Puerto Montt</p>
+      <div class="wrap pie">
+        <p>Felipe Silva Landeros</p>
+        <p class="lugar">Puerto Montt · 41°28′ S</p>
       </div>
     </footer>
   </body>

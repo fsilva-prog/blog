@@ -5,9 +5,9 @@ import { articulosDerecho, fechaTexto } from '../../lib/contenido.js';
 const articulos = await articulosDerecho();
 ---
 
-<Base title="Norma y Proceso" description="Derecho tributario y cumplimiento: dónde la norma se rompe al llevarla a la práctica.">
-  <section class="intro">
-    <p class="kicker">Norma y Proceso</p>
+<Base title="Norma y Proceso" description="Derecho tributario y cumplimiento: dónde la norma se rompe al llevarla a la práctica." seccion="seccion-papel">
+  <section class="cabecera-seccion">
+    <p class="etiqueta">Norma y Proceso</p>
     <h1>La norma no se cumple con criterio. Se cumple con proceso.</h1>
     <p>
       Notas sobre derecho tributario, cumplimiento y los lugares donde la teoría
@@ -18,13 +18,13 @@ const articulos = await articulosDerecho();
   <ul class="lista">
     {articulos.map((a) => (
       <li>
-        <p class="kicker">{a.data.tema}{a.data.borrador && ' · borrador'}</p>
+        {a.data.imagen && <a href={`/derecho/${a.id}/`}><img class="lista-img" src={a.data.imagen.replace(/\.png$/, '.svg')} alt="" width="1200" height="630" loading="lazy" /></a>}
+        <p class="etiqueta">{a.data.tema}{a.data.borrador && ' · borrador'}</p>
         <h2><a href={`/derecho/${a.id}/`}>{a.data.titulo}</a></h2>
         <p>{a.data.bajada}</p>
-        <p class="meta">
-          {fechaTexto(a.data.fecha)}{a.data.lectura && ` · ${a.data.lectura} de lectura`}
-        </p>
+        <p class="meta">{fechaTexto(a.data.fecha)}{a.data.lectura && ` · ${a.data.lectura} de lectura`}</p>
       </li>
     ))}
   </ul>
+  {articulos.length === 0 && <p class="vacio">El primer artículo se publicará pronto.</p>}
 </Base>

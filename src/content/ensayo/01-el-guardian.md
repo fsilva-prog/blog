@@ -4,6 +4,7 @@ bajada: "Por qué el universo necesitaría un límite, y por qué la luz puede l
 entrega: 1
 parte: "Primera parte: El guardián"
 lectura: "6 minutos"
+imagen: "/img/entregas/01-el-guardian.png"
 borrador: false
 fecha: "2026-10-12"
 ---

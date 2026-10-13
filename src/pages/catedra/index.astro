@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import { textosCatedra, fechaTexto } from '../../lib/contenido.js';
+
+const textos = await textosCatedra();
+---
+
+<Base title="Cátedra" description="Apuntes de clases y papers de Derecho Societario, Universidad San Sebastián." seccion="seccion-catedra">
+  <section class="cabecera-seccion cabecera-catedra">
+    <p class="etiqueta">Cátedra · Universidad San Sebastián</p>
+    <h1>Derecho Societario</h1>
+    <p>
+      Apuntes de clases, materiales y papers de la cátedra. Lo que se enseña en la
+      sala, ordenado para quien quiera volver sobre ello.
+    </p>
+  </section>
+
+  <ul class="lista">
+    {textos.map((t) => (
+      <li>
+        <p class="etiqueta">{t.data.tipo}{t.data.borrador && ' · borrador'}</p>
+        <h2><a href={`/catedra/${t.id}/`}>{t.data.titulo}</a></h2>
+        <p>{t.data.bajada}</p>
+        <p class="meta">{fechaTexto(t.data.fecha)}{t.data.lectura && ` · ${t.data.lectura} de lectura`}</p>
+      </li>
+    ))}
+  </ul>
+  {textos.length === 0 && <p class="vacio">Los primeros materiales se publicarán pronto.</p>}
+</Base>

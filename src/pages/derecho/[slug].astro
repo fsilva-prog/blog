@@ -14,11 +14,13 @@ const { Content } = await render(a);
 
 <Articulo
   kicker={`Norma y Proceso · ${a.data.tema}`}
+  variante="papel"
   titulo={a.data.titulo}
   bajada={a.data.bajada}
   fecha={a.data.fecha}
   lectura={a.data.lectura}
   borrador={a.data.borrador}
+  imagen={a.data.imagen}
 >
   <Content />
   <Fragment slot="pie">

@@ -1,49 +1,83 @@
 ---
 import Base from '../layouts/Base.astro';
-import { articulosDerecho, entregasEnsayo, fechaTexto } from '../lib/contenido.js';
+import {
+  articulosDerecho, entregasEnsayo, textosCatedra, fechaTexto, TOTAL_ENTREGAS,
+} from '../lib/contenido.js';
 
-const derecho = (await articulosDerecho()).slice(0, 3);
+const derecho = await articulosDerecho();
+const catedra = await textosCatedra();
 const entregas = await entregasEnsayo();
-const ultimaEntrega = entregas.at(-1);
+const ultima = entregas.at(-1);
+const imagenLuz = ultima?.data.imagen?.replace(/\.png$/, '.svg');
 ---
 
-<Base>
-  <section class="intro">
+<Base seccion="seccion-inicio" lateral={false}>
+  <section class="presentacion">
+    <p class="etiqueta">Abogado · Docente universitario · Puerto Montt</p>
     <h1>Felipe Silva Landeros</h1>
     <p>
-      Abogado. Escribo sobre dos cosas que rara vez conversan: el derecho tal como
-      se cumple en la práctica, y las preguntas que deja abiertas la ciencia cuando
-      se la mira junto al símbolo.
+      Autodidacta. Escribo sobre dos cosas que rara
+      vez conversan: el derecho tal como se cumple en la práctica, y las preguntas que
+      deja abiertas la ciencia cuando se la mira junto al símbolo.
     </p>
+    <a class="mas-sobre-mi" href="/acerca/">Más sobre mí →</a>
   </section>
 
-  <section class="bloque">
-    <p class="kicker">Ensayo por entregas</p>
-    <h2><a href="/la-luz/">La luz, guardián del universo</a></h2>
-    <p class="muted">
-      Un recorrido entre la física y el símbolo: la luz como límite, archivo y
-      mensajera del universo.
-    </p>
-    {ultimaEntrega ? (
-      <p class="meta">
-        Última entrega: <a href={`/la-luz/${ultimaEntrega.id}/`}>{ultimaEntrega.data.entrega}. {ultimaEntrega.data.titulo}</a>
+  <div class="caminos">
+    <a class="camino camino-luz" href="/la-luz/">
+      <span class="camino-texto">
+        <span class="etiqueta">Libro en curso</span>
+        <span class="camino-titulo">La luz, guardián del universo</span>
+        <span class="camino-bajada">
+          La luz como límite, archivo y mensajera del universo, entre la física y el símbolo.
+        </span>
+        <span class="camino-meta">
+          {ultima
+            ? <>Entrega {ultima.data.entrega} de {TOTAL_ENTREGAS}: {ultima.data.titulo}</>
+            : <>Primera entrega próximamente</>}
+        </span>
+      </span>
+      {imagenLuz && <img class="camino-img" src={imagenLuz} alt="" width="1200" height="630" />}
+    </a>
+
+    <a class="camino camino-papel" href="/derecho/">
+      <span class="etiqueta">Norma y Proceso</span>
+      <span class="camino-titulo">La norma no se cumple con criterio. Se cumple con proceso.</span>
+      <span class="camino-bajada">Derecho tributario y cumplimiento, donde la teoría se rompe en la práctica.</span>
+      <span class="camino-meta">
+        {derecho.length
+          ? <>Último: {derecho[0].data.titulo} · {fechaTexto(derecho[0].data.fecha)}</>
+          : <>Primer artículo próximamente</>}
+      </span>
+    </a>
+
+    <a class="camino camino-catedra" href="/catedra/">
+      <span class="etiqueta">Cátedra</span>
+      <span class="camino-titulo">Derecho Societario</span>
+      <span class="camino-bajada">Apuntes de clases y papers. Universidad San Sebastián.</span>
+      <span class="camino-meta">
+        {catedra.length
+          ? <>Último: {catedra[0].data.titulo}</>
+          : <>Primeros materiales próximamente</>}
+      </span>
+    </a>
+  </div>
+
+  <section class="banda-proyecto" aria-labelledby="proyecto-titulo">
+    <a class="banda-marca" href="https://www.simplificalo.cl" rel="noopener">
+      <img src="/img/simplificalo.png" alt="Simplificalo, soluciones legales y tributarias" width="900" height="252" />
+    </a>
+    <div class="banda-texto">
+      <p class="etiqueta">Emprendimiento</p>
+      <h2 id="proyecto-titulo">Simplificalo, mi primer proyecto</h2>
+      <p>
+        Fundé Simplificalo, una plataforma chilena que automatiza la contabilidad y el
+        cumplimiento tributario de pequeñas y medianas empresas: declaraciones,
+        facturación, conciliación bancaria y un portal propio para cada cliente.
+        Muchas de las ideas de Norma y Proceso nacen ahí, de ver qué ocurre cuando una
+        norma se aplica doscientas veces al mes.
       </p>
-    ) : (
-      <p class="meta">Primera entrega próximamente.</p>
-    )}
-  </section>
-
-  <section class="bloque">
-    <p class="kicker">Norma y Proceso</p>
-    <h2><a href="/derecho/">La norma no se cumple con criterio. Se cumple con proceso.</a></h2>
-    <ul class="lista compacta">
-      {derecho.map((a) => (
-        <li>
-          <a href={`/derecho/${a.id}/`}>{a.data.titulo}</a>
-          <span class="meta"> · {fechaTexto(a.data.fecha)}{a.data.borrador && ' · borrador'}</span>
-        </li>
-      ))}
-    </ul>
-    {derecho.length === 0 && <p class="meta">Primer artículo próximamente.</p>}
+      <a class="banda-enlace" href="https://www.simplificalo.cl" rel="noopener">Visitar simplificalo.cl →</a>
+    </div>
   </section>
 </Base>
