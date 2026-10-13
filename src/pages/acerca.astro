@@ -36,6 +36,41 @@ import Base from '../layouts/Base.astro';
         Si algo de lo que escribo te sirve, te inquieta o te parece equivocado, escríbeme.
         Las discrepancias fundadas me sirven más que los acuerdos.
       </p>
+      <form class="contacto" id="contacto" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="44e26719-5c4c-4e07-9423-7157436264dd" />
+        <input type="hidden" name="subject" value="Nuevo mensaje desde felipesilvalanderos.cl" />
+        <input type="hidden" name="from_name" value="felipesilvalanderos.cl" />
+        <input type="checkbox" name="botcheck" class="trampa" tabindex="-1" autocomplete="off" />
+        <label for="c-nombre">Nombre</label>
+        <input id="c-nombre" name="name" type="text" required autocomplete="name" />
+        <label for="c-correo">Correo</label>
+        <input id="c-correo" name="email" type="email" required autocomplete="email" />
+        <label for="c-mensaje">Mensaje</label>
+        <textarea id="c-mensaje" name="message" rows="6" required></textarea>
+        <button type="submit">Enviar mensaje</button>
+        <p class="contacto-estado" id="c-estado" role="status" aria-live="polite"></p>
+      </form>
+      <script is:inline>
+        (() => {
+          const f = document.getElementById('contacto');
+          const estado = document.getElementById('c-estado');
+          f.addEventListener('submit', async (ev) => {
+            ev.preventDefault();
+            const boton = f.querySelector('button');
+            boton.disabled = true;
+            estado.textContent = 'Enviando…';
+            try {
+              const r = await fetch(f.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(f) });
+              const d = await r.json();
+              if (d.success) { f.reset(); estado.textContent = 'Gracias. Tu mensaje llegó y te responderé pronto.'; }
+              else { estado.textContent = 'No se pudo enviar. Inténtalo de nuevo en un momento.'; }
+            } catch (e) {
+              estado.textContent = 'No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.';
+            }
+            boton.disabled = false;
+          });
+        })();
+      </script>
     </div>
   </article>
 </Base>

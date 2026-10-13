@@ -409,3 +409,20 @@ a:focus-visible { outline: 2px solid var(--oro); outline-offset: 3px; }
 }
 
 .lista-img { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 4px; margin-bottom: 1rem; }
+
+/* Formulario de contacto */
+.contacto { display: grid; gap: 0.4rem; margin-top: 1.5rem; max-width: 34rem; text-align: left; }
+.contacto label { font-family: var(--sans); font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--tinta-suave); margin-top: 0.6rem; }
+.contacto input, .contacto textarea {
+  font: inherit; font-size: 1.05rem; color: var(--tinta); background: var(--papel-2);
+  border: 1px solid var(--linea); border-radius: 4px; padding: 0.7rem 0.8rem; width: 100%;
+}
+.contacto input:focus, .contacto textarea:focus { outline: 2px solid var(--lacre); outline-offset: 1px; }
+.contacto button {
+  justify-self: start; margin-top: 1rem; font-family: var(--sans); font-size: 1rem; cursor: pointer;
+  color: var(--papel); background: var(--tinta); border: none; border-radius: 4px; padding: 0.75rem 1.2rem;
+}
+.contacto button:hover { background: var(--lacre); }
+.contacto button:disabled { opacity: 0.6; cursor: wait; }
+.contacto .trampa { display: none; }
+.contacto-estado { font-family: var(--sans); font-size: 0.95rem; color: var(--tinta-suave); min-height: 1.4em; margin: 0.5rem 0 0 !important; }
