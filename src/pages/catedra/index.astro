@@ -22,6 +22,7 @@ const textos = await textosCatedra();
         <h2><a href={`/catedra/${t.id}/`}>{t.data.titulo}</a></h2>
         <p>{t.data.bajada}</p>
         <p class="meta">{fechaTexto(t.data.fecha)}{t.data.lectura && ` · ${t.data.lectura} de lectura`}</p>
+        <a class="leer" href={`/catedra/${t.id}/`}>Leer completo →</a>
       </li>
     ))}
   </ul>

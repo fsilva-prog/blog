@@ -23,6 +23,7 @@ const articulos = await articulosDerecho();
         <h2><a href={`/derecho/${a.id}/`}>{a.data.titulo}</a></h2>
         <p>{a.data.bajada}</p>
         <p class="meta">{fechaTexto(a.data.fecha)}{a.data.lectura && ` · ${a.data.lectura} de lectura`}</p>
+        <a class="leer" href={`/derecho/${a.id}/`}>Leer el artículo completo →</a>
       </li>
     ))}
   </ul>

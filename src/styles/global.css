@@ -441,3 +441,10 @@ a:focus-visible { outline: 2px solid var(--oro); outline-offset: 3px; }
 .boton-contacto:hover { background: var(--lacre); }
 .pie a { color: inherit; }
 #contacto { scroll-margin-top: 2rem; }
+
+.leer {
+  display: inline-block; margin-top: 0.9rem; font-family: var(--sans); font-size: 0.95rem; text-decoration: none;
+  color: var(--papel); background: var(--tinta); padding: 0.55rem 1rem; border-radius: 4px;
+}
+.leer:hover { background: var(--lacre); color: var(--papel); }
+.seccion-catedra .leer:hover { background: var(--verde); }
