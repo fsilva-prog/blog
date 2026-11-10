@@ -468,3 +468,13 @@ a:focus-visible { outline: 2px solid var(--oro); outline-offset: 3px; }
   .site-header nav a.nav-contacto { margin-left: auto; }
   .seguir { padding: 1.25rem; }
 }
+
+/* ---------- Retrato ---------- */
+.presentacion.con-foto { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: 3rem; align-items: center; }
+.presentacion.con-foto .presentacion-texto > * { max-width: 46rem; }
+.foto-autor { order: 2; display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 1px solid var(--linea); box-shadow: 0 18px 40px -26px rgba(15, 20, 36, 0.6); }
+.foto-acerca { display: block; width: 11rem; height: 11rem; object-fit: cover; border-radius: 50%; border: 1px solid var(--linea); margin: 0 0 2rem; }
+@media (max-width: 40rem) {
+  .presentacion.con-foto { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+  .foto-autor { order: 0; width: 6.5rem; }
+}

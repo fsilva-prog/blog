@@ -12,7 +12,9 @@ const imagenLuz = ultima?.data.imagen?.replace(/\.png$/, '.svg');
 ---
 
 <Base seccion="seccion-inicio" lateral={false}>
-  <section class="presentacion">
+  <section class="presentacion con-foto">
+    <img class="foto-autor" src="/img/felipe.jpg" alt="Felipe Silva Landeros" width="720" height="720" />
+    <div class="presentacion-texto">
     <p class="etiqueta">Abogado · Docente universitario · Puerto Montt</p>
     <h1>Felipe Silva Landeros</h1>
     <p>
@@ -25,6 +27,7 @@ const imagenLuz = ultima?.data.imagen?.replace(/\.png$/, '.svg');
       <a class="boton-contacto" href="/acerca/#contacto">Escríbeme</a>
     </div>
     <Redes />
+    </div>
   </section>
 
   <div class="caminos">
