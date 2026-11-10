@@ -448,3 +448,23 @@ a:focus-visible { outline: 2px solid var(--oro); outline-offset: 3px; }
 }
 .leer:hover { background: var(--lacre); color: var(--papel); }
 .seccion-catedra .leer:hover { background: var(--verde); }
+
+/* ---------- Redes ---------- */
+.redes { list-style: none; display: flex; flex-wrap: wrap; gap: 0.35rem 1.1rem; margin: 0; padding: 0; font-family: var(--sans); font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.redes a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; }
+.redes a:hover { border-bottom-color: currentColor; }
+.pie-izq { display: flex; flex-direction: column; gap: 0.6rem; }
+.seguir { margin-top: 2.5rem; padding: 1.5rem 1.6rem; background: var(--papel-2); border: 1px solid var(--linea); border-radius: 6px; }
+.seguir p { margin: 0 0 0.9rem !important; font-family: var(--display); font-size: 1.45rem; line-height: 1.2; color: var(--tinta); }
+.seguir .redes { color: var(--lacre); font-size: 0.9rem; }
+.seccion-luz .seguir { background: transparent; }
+.presentacion .redes { margin-top: 1.5rem; color: var(--tinta-suave); }
+.camino-papel { grid-column: 1 / -1; }
+
+/* Menú en teléfonos: nombre arriba, secciones en una sola línea */
+@media (max-width: 40rem) {
+  .barra { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+  .site-header nav { flex-wrap: nowrap; align-items: center; gap: 0.95rem; font-size: 0.9rem; white-space: nowrap; }
+  .site-header nav a.nav-contacto { margin-left: auto; }
+  .seguir { padding: 1.25rem; }
+}

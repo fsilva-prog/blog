@@ -1,11 +1,12 @@
 ---
 import '../styles/global.css';
+import Redes from '../components/Redes.astro';
 
 const { title, description, seccion = '', imagen, lateral = true } = Astro.props;
 const imagenAbs = imagen ? new URL(imagen, Astro.site ?? Astro.url).href : undefined;
 const nombre = 'Felipe Silva Landeros';
 const fullTitle = title ? `${title} · ${nombre}` : nombre;
-const desc = description || 'Derecho, ciencia y símbolo. Textos de Felipe Silva Landeros.';
+const desc = description || 'Felipe Silva Landeros, abogado. Derecho societario y tributario para pymes y emprendedores, y un ensayo por entregas sobre la luz, la ciencia y el símbolo.';
 const ruta = Astro.url.pathname;
 const activo = (p) => (ruta.startsWith(p) ? 'activo' : '');
 ---
@@ -37,7 +38,6 @@ const activo = (p) => (ruta.startsWith(p) ? 'activo' : '');
         <nav aria-label="Secciones">
           <a href="/la-luz/" class={activo('/la-luz')}>La luz</a>
           <a href="/derecho/" class={activo('/derecho')}>Norma y Proceso</a>
-          <a href="/catedra/" class={activo('/catedra')}>Cátedra</a>
           <a href="/acerca/" class={activo('/acerca')}>Acerca</a>
           <a href="/acerca/#contacto" class="nav-contacto">Contacto</a>
         </nav>
@@ -70,7 +70,10 @@ const activo = (p) => (ruta.startsWith(p) ? 'activo' : '');
 
     <footer class="site-footer">
       <div class="wrap pie">
-        <p>Felipe Silva Landeros · <a href="/acerca/#contacto">Escríbeme</a></p>
+        <div class="pie-izq">
+          <p>Felipe Silva Landeros · <a href="/acerca/#contacto">Escríbeme</a></p>
+          <Redes />
+        </div>
         <p class="lugar">Puerto Montt · 41°28′ S</p>
       </div>
     </footer>

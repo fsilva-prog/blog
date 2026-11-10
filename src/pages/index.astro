@@ -1,11 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
+import Redes from '../components/Redes.astro';
 import {
-  articulosDerecho, entregasEnsayo, textosCatedra, fechaTexto, TOTAL_ENTREGAS,
+  articulosDerecho, entregasEnsayo, fechaTexto, TOTAL_ENTREGAS,
 } from '../lib/contenido.js';
 
 const derecho = await articulosDerecho();
-const catedra = await textosCatedra();
 const entregas = await entregasEnsayo();
 const ultima = entregas.at(-1);
 const imagenLuz = ultima?.data.imagen?.replace(/\.png$/, '.svg');
@@ -16,14 +16,15 @@ const imagenLuz = ultima?.data.imagen?.replace(/\.png$/, '.svg');
     <p class="etiqueta">Abogado · Docente universitario · Puerto Montt</p>
     <h1>Felipe Silva Landeros</h1>
     <p>
-      Autodidacta. Escribo sobre dos cosas que rara
-      vez conversan: el derecho tal como se cumple en la práctica, y las preguntas que
-      deja abiertas la ciencia cuando se la mira junto al símbolo.
+      Escribo sobre derecho societario y tributario para pymes y emprendedores,
+      desde lo que veo en la práctica, y sobre las preguntas que deja abiertas la ciencia
+      cuando se la mira junto al símbolo.
     </p>
     <div class="acciones-inicio">
       <a class="mas-sobre-mi" href="/acerca/">Más sobre mí →</a>
       <a class="boton-contacto" href="/acerca/#contacto">Escríbeme</a>
     </div>
+    <Redes />
   </section>
 
   <div class="caminos">
@@ -46,7 +47,7 @@ const imagenLuz = ultima?.data.imagen?.replace(/\.png$/, '.svg');
     <a class="camino camino-papel" href="/derecho/">
       <span class="etiqueta">Norma y Proceso</span>
       <span class="camino-titulo">La norma no se cumple con criterio. Se cumple con proceso.</span>
-      <span class="camino-bajada">Derecho tributario y cumplimiento, donde la teoría se rompe en la práctica.</span>
+      <span class="camino-bajada">Derecho societario y tributario para pymes y emprendedores, en el punto donde la teoría se encuentra con la práctica.</span>
       <span class="camino-meta">
         {derecho.length
           ? <>Último: {derecho[0].data.titulo} · {fechaTexto(derecho[0].data.fecha)}</>
@@ -54,16 +55,6 @@ const imagenLuz = ultima?.data.imagen?.replace(/\.png$/, '.svg');
       </span>
     </a>
 
-    <a class="camino camino-catedra" href="/catedra/">
-      <span class="etiqueta">Cátedra</span>
-      <span class="camino-titulo">Derecho Societario</span>
-      <span class="camino-bajada">Apuntes de clases y papers. Universidad San Sebastián.</span>
-      <span class="camino-meta">
-        {catedra.length
-          ? <>Último: {catedra[0].data.titulo}</>
-          : <>Primeros materiales próximamente</>}
-      </span>
-    </a>
   </div>
 
   <section class="banda-proyecto" aria-labelledby="proyecto-titulo">

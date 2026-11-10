@@ -1,6 +1,7 @@
 ---
 import Base from './Base.astro';
 import { fechaTexto } from '../lib/contenido.js';
+import Redes from '../components/Redes.astro';
 
 // Plantilla común. variante="luz" usa la cabecera nocturna del ensayo.
 const { kicker, titulo, bajada, fecha, lectura, borrador, imagen, variante = 'papel' } = Astro.props;
@@ -49,6 +50,11 @@ const esLuz = variante === 'luz';
     <div class:list={['prosa', { 'prosa-luz': esLuz }]}>
       <slot />
     </div>
+
+    <aside class="seguir" aria-label="Sígueme">
+      <p>{esLuz ? 'Cada miércoles publico una nueva entrega. Para no perderte la siguiente, sígueme en:' : 'Casi todos los días publico contenido breve sobre estos temas. Sígueme en:'}</p>
+      <Redes />
+    </aside>
 
     <footer class="articulo-pie">
       <slot name="pie" />

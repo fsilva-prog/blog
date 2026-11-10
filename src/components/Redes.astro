@@ -1,0 +1,9 @@
+---
+import { REDES } from '../lib/redes.js';
+const { clase = '' } = Astro.props;
+---
+<ul class:list={['redes', clase]} aria-label="Redes sociales">
+  {REDES.map((r) => (
+    <li><a href={r.url} rel="noopener me" target="_blank">{r.nombre}</a></li>
+  ))}
+</ul>
