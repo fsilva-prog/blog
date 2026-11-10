@@ -1,9 +1,16 @@
 ---
+// Botones de redes. conNombre=true muestra el nombre junto al logo.
 import { REDES } from '../lib/redes.js';
-const { clase = '' } = Astro.props;
+const { clase = '', conNombre = false } = Astro.props;
+const limpio = (svg) => svg.replace(/class="[^"]*"/, 'aria-hidden="true" focusable="false"');
 ---
-<ul class:list={['redes', clase]} aria-label="Redes sociales">
+<ul class:list={['redes', clase, { 'redes-nombre': conNombre }]} aria-label="Redes sociales">
   {REDES.map((r) => (
-    <li><a href={r.url} rel="noopener me" target="_blank">{r.nombre}</a></li>
+    <li>
+      <a href={r.url} rel="noopener me" target="_blank" aria-label={r.nombre} title={r.nombre}>
+        <Fragment set:html={limpio(r.icono)} />
+        {conNombre && <span>{r.nombre}</span>}
+      </a>
+    </li>
   ))}
 </ul>
