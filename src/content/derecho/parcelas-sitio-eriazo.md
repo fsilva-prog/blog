@@ -2,7 +2,7 @@
 titulo: "Parcelas clasificadas en bloque"
 bajada: "El Servicio de Impuestos Internos registra como «sitio eriazo» muchas parcelas del sur por el solo hecho de venir de un loteo, sin mirar cada predio, y sus dueños pagan contribuciones como si no fueran campo. Un fallo reciente del Tribunal Tributario y Aduanero de Los Lagos explica por qué la ley exige otra cosa."
 tema: "Impuesto territorial · Avalúos"
-fecha: "2026-11-10"
+fecha: "2026-11-12"
 lectura: "9 minutos"
 imagen: "/img/derecho/parcelas-sitio-eriazo.png"
 borrador: true
@@ -69,7 +69,3 @@ El fallo todavía puede ser revisado, porque el Servicio tiene la posibilidad de
 Para quien tiene una parcela que proviene de un loteo, el primer paso es muy simple: descargar el certificado de avalúo fiscal desde el sitio del Servicio y revisar la serie y el destino que tiene asignados. Si el predio figura en la serie no agrícola con destino eriazo, y en los hechos conserva su aptitud agrícola o forestal, se puede pedir al Servicio que modifique la clasificación invocando el artículo 10 de la Ley 17.235, que contempla la modificación de los avalúos por errores de clasificación. Conviene pedir también, de manera expresa, la devolución de lo que se haya pagado en exceso, sabiendo que esa devolución tiene límites de tiempo. Si el Servicio rechaza la solicitud, esa resolución se puede reclamar ante el Tribunal Tributario y Aduanero dentro de los noventa días siguientes a su notificación, conforme al artículo 124 del Código Tributario, que fue la vía que se usó en esta causa.
 
 Como el Servicio clasificó en bloque, la corrección conviene pedirla mostrando cada predio. Para eso sirven el certificado de avalúo, el certificado del SAG que autorizó la subdivisión, la inscripción de dominio con su plano, antecedentes del uso real del terreno y, idealmente, un informe técnico sobre la aptitud del suelo.
-
----
-
-*Si tienes una parcela en esta situación, o te tocó revisar un certificado de avalúo que no te calzó, cuéntamelo en los comentarios de mis redes. Me interesa saber qué tan extendido está el problema en la región.*
