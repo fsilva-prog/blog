@@ -17,6 +17,6 @@
 <line x1="850" y1="170" x2="850" y2="510" stroke="#7a2a2a" stroke-width="2" stroke-dasharray="7 8"/>
 <line x1="690" y1="340" x2="1010" y2="340" stroke="#7a2a2a" stroke-width="2" stroke-dasharray="7 8"/>
 <text x="850" y="150" text-anchor="middle" font-family="Helvetica,Arial" font-size="14" letter-spacing="3" fill="#7a2a2a">HIJUELAS DE 0,5 HA</text>
-<text x="120" y="80" font-family="Helvetica,Arial" font-size="18" letter-spacing="4" fill="#1a1a1a">LA PARCELA Y SU AVALÚO</text>
-<text x="600" y="595" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="19" fill="#5a3a2a">la tierra sin cultivar sigue siendo tierra de cultivo</text>
+<text x="120" y="80" font-family="Helvetica,Arial" font-size="18" letter-spacing="4" fill="#1a1a1a">PARCELAS CLASIFICADAS EN BLOQUE</text>
+<text x="600" y="595" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="19" fill="#5a3a2a">la serie se decide predio por predio</text>
 </svg>
