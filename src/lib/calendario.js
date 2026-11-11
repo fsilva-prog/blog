@@ -1,7 +1,7 @@
 // Calendario de lectura: La luz sale todos los miércoles; «Lo que se pierde al
 // escribir», un domingo sí y uno no. Se calcula a partir de dos fechas de partida.
 const DIA = 24 * 60 * 60 * 1000;
-const LUZ = { inicio: Date.UTC(2026, 10, 18), primera: 6, cada: 7, total: 4 };
+const LUZ = { inicio: Date.UTC(2026, 10, 11), primera: 5, cada: 7, total: 5 };
 const ESCRITURA = { inicio: Date.UTC(2026, 10, 22), primera: 1, cada: 14, total: 7 };
 
 export function proximasEntregas(cantidad = 6, desde = new Date()) {
