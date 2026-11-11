@@ -1,0 +1,40 @@
+---
+import { render } from 'astro:content';
+import Articulo from '../../layouts/Articulo.astro';
+import { entregasEscritura, TOTAL_ESCRITURA } from '../../lib/contenido.js';
+
+export async function getStaticPaths() {
+  const entregas = await entregasEscritura();
+  return entregas.map((e, i) => ({
+    params: { slug: e.id },
+    props: { e, anterior: entregas[i - 1], siguiente: entregas[i + 1] },
+  }));
+}
+
+const { e, anterior, siguiente } = Astro.props;
+const { Content } = await render(e);
+---
+
+<Articulo
+  variante="escritura"
+  kicker={`Lo que se pierde al escribir · Entrega ${e.data.entrega} de ${TOTAL_ESCRITURA}`}
+  titulo={e.data.titulo}
+  bajada={e.data.bajada}
+  fecha={e.data.fecha}
+  lectura={e.data.lectura}
+  borrador={e.data.borrador}
+  imagen={e.data.imagen}
+>
+  <Content />
+  <Fragment slot="pie">
+    <nav class="entre-entregas" aria-label="Entregas">
+      {anterior
+        ? <a href={`/escritura/${anterior.id}/`}><small>Anterior</small>{anterior.data.titulo}</a>
+        : <span></span>}
+      {siguiente
+        ? <a class="sig" href={`/escritura/${siguiente.id}/`}><small>Siguiente</small>{siguiente.data.titulo}</a>
+        : <span class="sig continuara"><small>Siguiente</small>Continuará</span>}
+    </nav>
+    <p><a href="/escritura/">Índice del ensayo</a></p>
+  </Fragment>
+</Articulo>

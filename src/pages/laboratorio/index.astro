@@ -1,0 +1,93 @@
+---
+// Caso de laboratorio: contexto del experimento y bitácora (borrador, sin enlace en el menú).
+import Base from '../../layouts/Base.astro';
+
+import { HITOS as hitos, ESTADO as etiqueta } from '../../lib/laboratorio.js';
+---
+<Base title="Caso de laboratorio: Simplifica SpA y Antonia" description="Experimento en curso: Simplifica SpA, una sociedad real gestionada por Antonia, una agente de inteligencia artificial. Bitácora abierta de Felipe Silva Landeros sobre inteligencia artificial y derecho de sociedades." lateral={false}>
+  <div class="lab">
+    <article class="lab-contexto">
+      <p class="etiqueta">Caso de laboratorio</p>
+      <h1>Una empresa gestionada por una inteligencia artificial</h1>
+      <div class="prosa">
+        <p>
+          Cada vez más empresas, y no solo las grandes, están poniendo a una inteligencia
+          artificial a hacer trabajos que hasta hace poco hacía una persona: responder a los
+          clientes, ofrecer un producto, cerrar una venta. Lo que me inquieta como abogado es que
+          el derecho de sociedades se construyó sobre la idea de que detrás de cada decisión de
+          una empresa hay alguien de carne y hueso, sea un directorio, un gerente, un
+          administrador o un mandatario. Y la pregunta que me vengo haciendo hace un tiempo es
+          qué pasa con todo eso cuando quien decide, al menos en parte, ya no es una persona.
+        </p>
+        <p>
+          Llevo meses investigando esa pregunta, y en algún momento me di cuenta de que
+          responderla solo en teoría no bastaba. Es fácil imaginar cómo debería comportarse una
+          inteligencia artificial dentro de una empresa, pero otra cosa muy distinta es ver qué
+          hace de verdad cuando tiene una tarea, un presupuesto y clientes reales al frente. Por
+          eso decidí llevar la pregunta a la práctica, con una sociedad de verdad, con clientes de
+          verdad y con dinero de verdad.
+        </p>
+        <p>
+          Así nació Simplifica SpA. Es una sociedad por acciones como cualquier otra, inscrita y
+          con su RUT, y su negocio es ofrecer una plataforma para que las empresas cumplan con la
+          nueva ley de protección de datos personales. La diferencia está en quién la gestiona,
+          porque el día a día no lo llevaré yo ni un equipo de personas, sino Antonia, una agente
+          de inteligencia artificial. Ella va a decidir cómo darse a conocer, a quién ofrecerle el
+          servicio, en qué gastar un presupuesto acotado, cómo atender a los clientes y cómo
+          cerrar cada venta. Vender es solo una parte de su trabajo; lo que me interesa es ver
+          cómo conduce una empresa completa.
+        </p>
+        <p>
+          Antonia tendrá sus propias cuentas y su propia voz. No va a esconder que es una
+          inteligencia artificial, y si alguien se lo pregunta dirá la verdad, aunque tampoco lo
+          va a anunciar en cada mensaje. Yo sigo siendo el accionista y el administrador de la
+          sociedad ante la ley, y mi trabajo será mirar cómo gestiona: qué decide por su cuenta,
+          dónde se equivoca, cómo trata a las personas y hasta dónde llega lo que yo le encargué.
+        </p>
+        <p>
+          Esta página es el registro de todo eso. Aquí voy anotando cada paso del experimento,
+          desde antes de que Antonia exista, para que cualquiera pueda seguirlo completo. Creo que
+          lo que pase aquí le puede servir a quien esté pensando en poner una inteligencia
+          artificial a trabajar en su propia empresa, y por eso prefiero contarlo abierto. Lo que
+          todo esto me enseñe sobre el derecho lo escribiré a su tiempo.
+        </p>
+      </div>
+    </article>
+
+    <aside class="lab-bitacora" aria-labelledby="bitacora-titulo">
+      <h2 id="bitacora-titulo">Bitácora</h2>
+      <ol class="bit-lista">
+        {hitos.map((h) => (
+          <li class:list={['bit-item', `bit-${h.estado}`]}>
+            <span class="bit-cuando">{h.cuando} · {etiqueta[h.estado]}</span>
+            <span class="bit-titulo">{h.titulo}</span>
+            <span class="bit-texto">{h.texto}</span>
+          </li>
+        ))}
+      </ol>
+    </aside>
+  </div>
+</Base>
+
+<style>
+  .lab { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 4rem; margin: 0 0 4rem; padding-top: 3rem; align-items: start; }
+  .lab-contexto h1 { font-family: var(--display); font-weight: 400; font-size: clamp(2.2rem, 4.4vw, 3.4rem); line-height: 1.05; margin: 0.3rem 0 1.5rem; }
+  .lab-contexto .aviso-borrador { margin-bottom: 1rem; }
+  .lab-bitacora { border-left: 1px solid var(--linea); padding-left: 2rem; position: sticky; top: 2rem; }
+  .lab-bitacora h2 { font-family: var(--display); font-weight: 400; font-size: 1.8rem; margin: 0 0 1rem; padding-bottom: 0.8rem; border-bottom: 2px solid var(--tinta); }
+  .bit-lista { list-style: none; margin: 0; padding: 0; position: relative; }
+  .bit-lista::before { content: ""; position: absolute; left: 0.35rem; top: 1.2rem; bottom: 1.2rem; border-left: 1px dashed var(--linea); }
+  .bit-item { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); column-gap: 0.6rem; row-gap: 0.2rem; padding: 0.9rem 0; position: relative; }
+  .bit-item::before { content: ""; grid-row: 1 / span 3; width: 0.7rem; height: 0.7rem; margin-top: 0.15rem; border-radius: 50%; border: 2px solid var(--lacre); background: var(--papel, #f6f4ef); position: relative; z-index: 1; }
+  .bit-item > span { grid-column: 2; }
+  .bit-hecho::before { background: var(--lacre); }
+  .bit-en-curso::before { background: linear-gradient(90deg, var(--lacre) 50%, var(--papel, #f6f4ef) 50%); }
+  .bit-cuando { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--tinta-suave); }
+  .bit-titulo { font-family: var(--display); font-size: 1.25rem; line-height: 1.15; }
+  .bit-texto { font-size: 0.95rem; line-height: 1.45; color: var(--tinta-suave); }
+  .bit-proximo .bit-titulo { color: var(--tinta-suave); }
+  @media (max-width: 56rem) {
+    .lab { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+    .lab-bitacora { border-left: 0; padding-left: 0; position: static; }
+  }
+</style>

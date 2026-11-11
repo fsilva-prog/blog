@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import Calendario from '../../components/Calendario.astro';
+import { entregasEnsayo, entregasEscritura, TOTAL_ENTREGAS, TOTAL_ESCRITURA } from '../../lib/contenido.js';
+const luz = await entregasEnsayo();
+const esc = await entregasEscritura();
+---
+<Base title="Ensayos" description="Dos ensayos por entregas: La luz, guardián del universo, y Lo que se pierde al escribir." lateral={false}>
+  <section class="cabecera-seccion">
+    <p class="etiqueta">Ensayos por entregas</p>
+    <h1>Dos ensayos, dos ritmos</h1>
+    <p>Fuera del derecho, escribo sobre dos preguntas que me acompañan hace tiempo. Cada ensayo se publica por partes y cada entrega puede leerse sola.</p>
+  </section>
+  <div class="caminos">
+    <a class="camino camino-luz" href="/la-luz/">
+      <span class="camino-texto">
+        <span class="etiqueta">Cada miércoles</span>
+        <span class="camino-titulo">La luz, guardián del universo</span>
+        <span class="camino-bajada">La luz como límite, archivo y mensajera del universo, entre la física y el símbolo.</span>
+        <span class="camino-meta">{luz.length} de {TOTAL_ENTREGAS} entregas publicadas</span>
+      </span>
+    </a>
+    <a class="camino camino-escritura" href="/escritura/">
+      <span class="etiqueta">Un domingo sí y uno no</span>
+      <span class="camino-titulo">Lo que se pierde al escribir</span>
+      <span class="camino-bajada">La escritura, la memoria y lo que cambia cada vez que el saber cambia de soporte, hasta la inteligencia artificial.</span>
+      <span class="camino-meta">{esc.length} de {TOTAL_ESCRITURA} entregas publicadas</span>
+    </a>
+  </div>
+  <Calendario />
+</Base>

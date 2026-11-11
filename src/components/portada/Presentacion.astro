@@ -1,0 +1,46 @@
+---
+// Presentación de la portada: el nombre grande (única vez que aparece arriba),
+// la foto redonda y una franja de credenciales para quien llega desde LinkedIn.
+import Redes from '../Redes.astro';
+---
+<section class="pp-hero">
+  <div class="wrap pp-hero-grid">
+    <div class="pp-hero-texto">
+      <p class="pp-etiqueta">Abogado · Puerto Montt</p>
+      <h1 class="pp-nombre">Felipe Silva Landeros</h1>
+      <p class="pp-lema">Derecho societario y tributario para pymes y emprendedores, explicado desde la práctica.</p>
+      <p class="pp-intro">
+        Asesoro a empresas y emprendedores, enseño Derecho Societario en la Universidad San Sebastián
+        y escribo sobre lo que veo todos los días. Fuera del despacho, publico dos ensayos por entregas.
+      </p>
+      <div class="pp-acciones">
+        <a class="pp-boton" href="/acerca/#contacto">Escríbeme</a>
+        <a class="pp-enlace" href="/acerca/">Más sobre mí →</a>
+      </div>
+      <Redes clase="pp-redes" />
+    </div>
+    <figure class="pp-retrato">
+      <img src="/img/felipe.jpg" alt="Felipe Silva Landeros" width="720" height="720" />
+    </figure>
+  </div>
+
+  <div class="wrap">
+    <ul class="pp-credenciales" aria-label="Práctica, docencia y emprendimiento">
+      <li>
+        <span class="pp-cred-tipo">Práctica</span>
+        <a class="pp-cred-texto" href="/derecho/">Derecho societario y tributario para pymes</a>
+      </li>
+      <li>
+        <span class="pp-cred-tipo">Docencia</span>
+        <a class="pp-cred-texto" href="/catedra/">Derecho Societario, Universidad San Sebastián</a>
+      </li>
+      <li>
+        <span class="pp-cred-tipo">Fundador</span>
+        <a class="pp-cred-texto pp-cred-logo" href="https://www.simplificalo.cl" rel="noopener">
+          <img src="/img/simplificalo.png" alt="Simplificalo" width="900" height="252" />
+          <span>Automatización contable y tributaria</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>

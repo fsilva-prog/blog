@@ -1,0 +1,58 @@
+---
+// Un ensayo por entregas como banda a todo el ancho, con su propio mundo
+// visual: 'luz' (la noche) o 'escritura' (la arcilla).
+import { svgDe } from '../../lib/portada.js';
+import { diaTexto } from '../../lib/calendario.js';
+
+const {
+  mundo, href, titulo, descripcion, ritmo, entregas = [], total,
+  proxima, imagenPorDefecto, invertida = false,
+} = Astro.props;
+
+const ultima = entregas.at(-1);
+const imagen = svgDe(ultima?.data.imagen ?? imagenPorDefecto);
+const recientes = entregas.slice(-3).reverse();
+const enlace = (e) => `${href}${e.id}/`;
+---
+<section class:list={['ens', `ens-${mundo}`, { 'ens-invertida': invertida }]} aria-label={titulo}>
+  <div class="wrap ens-grid">
+    <div class="ens-texto">
+      <p class="ens-etiqueta">Ensayo por entregas · {ritmo}</p>
+      <h3 class="ens-titulo"><a href={href}>{titulo}</a></h3>
+      <p class="ens-descripcion">{descripcion}</p>
+
+      <div class="ens-progreso" aria-label={`${entregas.length} de ${total} entregas publicadas`}>
+        <ol class="ens-puntos" aria-hidden="true">
+          {Array.from({ length: total }, (_, i) => <li class:list={{ lleno: i < entregas.length }}></li>)}
+        </ol>
+        <span class="ens-progreso-texto">
+          {entregas.length} de {total} entregas{proxima && <> · próxima: {diaTexto(proxima.fecha)}</>}
+        </span>
+      </div>
+
+      {recientes.length > 0 && (
+        <ol class="ens-indice">
+          {recientes.map((e) => (
+            <li>
+              <a href={enlace(e)}>
+                <span class="ens-num">{String(e.data.entrega).padStart(2, '0')}</span>
+                <span class="ens-entrega">{e.data.titulo}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      )}
+
+      <div class="ens-acciones">
+        {ultima
+          ? <a class="ens-boton" href={enlace(ultima)}>Leer la última entrega</a>
+          : <span class="ens-boton ens-boton-quieto">Primera entrega pronto</span>}
+        <a class="ens-enlace" href={href}>Desde el principio →</a>
+      </div>
+    </div>
+
+    <a class="ens-figura" href={ultima ? enlace(ultima) : href} tabindex="-1" aria-hidden="true">
+      <img src={imagen} alt="" width="1200" height="630" />
+    </a>
+  </div>
+</section>

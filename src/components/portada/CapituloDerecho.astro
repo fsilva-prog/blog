@@ -1,0 +1,77 @@
+---
+// Capítulo I de la portada: Norma y Proceso con su artículo destacado,
+// los anteriores y la Cátedra.
+import { fechaTexto } from '../../lib/contenido.js';
+import { svgDe } from '../../lib/portada.js';
+import { HITOS, hitoActual } from '../../lib/laboratorio.js';
+const actual = hitoActual();
+
+const { articulos = [], catedra = [] } = Astro.props;
+const [destacado, ...anteriores] = articulos;
+---
+<section class="cap cap-derecho" aria-labelledby="cap-derecho-titulo">
+  <div class="wrap">
+    <header class="cap-cabecera">
+      <span class="cap-numero" aria-hidden="true">I</span>
+      <div class="cap-titulos">
+        <p class="cap-etiqueta">El derecho · Norma y Proceso</p>
+        <h2 id="cap-derecho-titulo" class="cap-titulo">La norma no se cumple con criterio. Se cumple con proceso.</h2>
+      </div>
+      <a class="cap-todos" href="/derecho/">Todos los artículos →</a>
+    </header>
+
+    <div class="der-grid">
+      {destacado && (
+        <a class="der-destacado" href={`/derecho/${destacado.id}/`}>
+          {destacado.data.imagen && (
+            <img class="der-img" src={svgDe(destacado.data.imagen)} alt="" width="1200" height="630" loading="lazy" />
+          )}
+          <span class="der-tema">{destacado.data.tema}</span>
+          <span class="der-titulo">{destacado.data.titulo}</span>
+          <span class="der-bajada">{destacado.data.bajada}</span>
+          <span class="der-meta">
+            {fechaTexto(destacado.data.fecha)}{destacado.data.lectura && ` · ${destacado.data.lectura} de lectura`}
+          </span>
+        </a>
+      )}
+
+      <div class="der-lateral">
+        <p class="der-lateral-titulo">Artículos anteriores</p>
+        <ol class="der-lista">
+          {anteriores.slice(0, 3).map((a) => (
+            <li>
+              <a href={`/derecho/${a.id}/`}>
+                <span class="der-tema">{a.data.tema}</span>
+                <span class="der-lista-titulo">{a.data.titulo}</span>
+                <span class="der-meta">{fechaTexto(a.data.fecha)}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+
+        <a class="der-lab" href="/laboratorio/">
+          <span class="der-lab-etiqueta">Caso de laboratorio</span>
+          <span class="der-lab-titulo">Simplifica SpA y Antonia</span>
+          <span class="der-lab-texto">Una sociedad real gestionada por una agente de inteligencia artificial. Experimento en curso.</span>
+          <span class="der-lab-progreso" aria-hidden="true">
+            {HITOS.map((h) => <span class:list={['der-lab-punto', `der-lab-${h.estado}`]}></span>)}
+          </span>
+          <span class="der-lab-actual">Ahora: {actual.titulo}</span>
+          <span class="der-lab-ver">Ver la bitácora →</span>
+        </a>
+      </div>
+    </div>
+
+    <a class="der-catedra" href="/catedra/">
+      <span class="der-catedra-etiqueta">Cátedra</span>
+      <span class="der-catedra-titulo">Derecho Societario · Universidad San Sebastián</span>
+      <span class="der-catedra-texto">
+        {catedra.length
+          ? <>Último apunte: {catedra[0].data.titulo}</>
+          : <>Apuntes y papers para alumnos y colegas. El primero llega pronto.</>}
+      </span>
+      <span class="der-catedra-flecha" aria-hidden="true">→</span>
+    </a>
+
+  </div>
+</section>

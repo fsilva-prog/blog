@@ -19,6 +19,14 @@ export async function entregasEnsayo() {
   return todas.sort((a, b) => a.data.entrega - b.data.entrega);
 }
 
+export async function entregasEscritura() {
+  const todas = await getCollection('escritura', visible);
+  return todas.sort((a, b) => a.data.entrega - b.data.entrega);
+}
+
+// Cantidad total de entregas planificadas de «Lo que se pierde al escribir».
+export const TOTAL_ESCRITURA = 7;
+
 export function fechaTexto(fecha) {
   if (!fecha) return '';
   return fecha.toLocaleDateString('es-CL', {

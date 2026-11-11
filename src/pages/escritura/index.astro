@@ -1,0 +1,57 @@
+---
+import Base from '../../layouts/Base.astro';
+import { entregasEscritura, fechaTexto, TOTAL_ESCRITURA } from '../../lib/contenido.js';
+
+const entregas = await entregasEscritura();
+const pendientes = Math.max(0, TOTAL_ESCRITURA - entregas.length);
+---
+
+<Base
+  title="Lo que se pierde al escribir"
+  description="Ensayo por entregas sobre la escritura, la memoria y lo que cambia cada vez que el saber cambia de soporte, desde la costumbre hasta la inteligencia artificial."
+  seccion="seccion-escritura"
+  lateral={false}
+>
+  <header slot="portada" class="arcilla arcilla-alta">
+    <div class="wrap">
+      <p class="etiqueta">Ensayo en curso</p>
+      <h1 class="titulo-arcilla grande">Lo que se pierde al escribir</h1>
+      <blockquote class="epigrafe epigrafe-arcilla">
+        <p>Quienes aprendan las letras confiarán en signos ajenos y dejarán de recordar desde dentro.</p>
+        <cite>El rey Thamus a Theuth, según el Fedro de Platón</cite>
+      </blockquote>
+    </div>
+  </header>
+
+  <section class="serie-intro">
+    <p>
+      Un recorrido por lo que ganamos y lo que perdimos cada vez que el saber cambió de
+      soporte: de la memoria a la escritura, de la costumbre a la ley, de la imprenta a la
+      pantalla y, ahora, a la inteligencia artificial. Se publica un domingo sí y uno no.
+    </p>
+    <p class="meta">{entregas.length} de {TOTAL_ESCRITURA} entregas publicadas</p>
+  </section>
+
+  <ol class="indice indice-escritura">
+    {entregas.map((e) => (
+      <li>
+        <a href={`/escritura/${e.id}/`}>
+          <span class="indice-num">{e.data.entrega}</span>
+          <span class="indice-cuerpo">
+            {e.data.imagen && <img class="indice-img" src={e.data.imagen.replace(/\.png$/, '.svg')} alt="" width="1200" height="630" loading="lazy" />}
+            <span class="indice-parte">Entrega {e.data.entrega}{e.data.borrador && ' · borrador'}</span>
+            <span class="indice-titulo">{e.data.titulo}</span>
+            <span class="indice-bajada">{e.data.bajada}</span>
+            {e.data.fecha && <span class="meta">{fechaTexto(e.data.fecha)}</span>}
+          </span>
+        </a>
+      </li>
+    ))}
+    {Array.from({ length: pendientes }, (_, i) => (
+      <li class="pendiente">
+        <span class="indice-num">{entregas.length + i + 1}</span>
+        <span class="indice-cuerpo"><span class="indice-parte">Próximamente</span></span>
+      </li>
+    ))}
+  </ol>
+</Base>

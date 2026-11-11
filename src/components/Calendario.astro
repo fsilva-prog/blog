@@ -1,0 +1,26 @@
+---
+// Franja de próximas entregas de los dos ensayos.
+import { proximasEntregas, diaTexto } from '../lib/calendario.js';
+const proximas = proximasEntregas(6);
+const nombre = { luz: 'La luz, guardián del universo', escritura: 'Lo que se pierde al escribir' };
+---
+<section class="calendario" aria-labelledby="calendario-titulo">
+  <div class="calendario-head">
+    <p class="etiqueta">Calendario de lectura</p>
+    <h2 id="calendario-titulo">Dos ensayos, dos ritmos</h2>
+    <p class="calendario-leyenda">
+      <span class="leyenda-item"><span class="punto punto-luz"></span> La luz, cada miércoles</span>
+      <span class="leyenda-item"><span class="punto punto-escritura"></span> Lo que se pierde al escribir, un domingo sí y uno no</span>
+    </p>
+  </div>
+  <ol class="calendario-lista">
+    {proximas.map((e) => (
+      <li class:list={['cal-item', `cal-${e.serie}`]}>
+        <span class="cal-dia">{diaTexto(e.fecha)}</span>
+        <span class="cal-marca" aria-hidden="true"></span>
+        <span class="cal-serie">{nombre[e.serie]}</span>
+        <span class="cal-entrega">Entrega {e.entrega}</span>
+      </li>
+    ))}
+  </ol>
+</section>

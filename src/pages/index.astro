@@ -1,80 +1,68 @@
 ---
+// Portada. Dos mundos en diálogo: primero el derecho, sobre papel; luego,
+// tras un umbral que oscurece, los dos ensayos con su propia noche y su arcilla.
 import Base from '../layouts/Base.astro';
-import Redes from '../components/Redes.astro';
+import Presentacion from '../components/portada/Presentacion.astro';
+import CapituloDerecho from '../components/portada/CapituloDerecho.astro';
+import EnsayoBanda from '../components/portada/EnsayoBanda.astro';
+import ProximasEntregas from '../components/portada/ProximasEntregas.astro';
 import {
-  articulosDerecho, entregasEnsayo, fechaTexto, TOTAL_ENTREGAS,
+  articulosDerecho, textosCatedra, entregasEnsayo, entregasEscritura,
+  TOTAL_ENTREGAS, TOTAL_ESCRITURA,
 } from '../lib/contenido.js';
+import { proximaDe } from '../lib/calendario.js';
+import '../styles/portada.css';
 
 const derecho = await articulosDerecho();
-const entregas = await entregasEnsayo();
-const ultima = entregas.at(-1);
-const imagenLuz = ultima?.data.imagen?.replace(/\.png$/, '.svg');
+const catedra = await textosCatedra();
+const luz = await entregasEnsayo();
+const escritura = await entregasEscritura();
 ---
 
-<Base seccion="seccion-inicio" lateral={false}>
-  <section class="presentacion con-foto">
-    <img class="foto-autor" src="/img/felipe.jpg" alt="Felipe Silva Landeros" width="720" height="720" />
-    <div class="presentacion-texto">
-    <p class="etiqueta">Abogado · Docente universitario · Puerto Montt</p>
-    <h1>Felipe Silva Landeros</h1>
-    <p>
-      Escribo sobre derecho societario y tributario para pymes y emprendedores,
-      desde lo que veo en la práctica, y sobre las preguntas que deja abiertas la ciencia
-      cuando se la mira junto al símbolo.
-    </p>
-    <div class="acciones-inicio">
-      <a class="mas-sobre-mi" href="/acerca/">Más sobre mí →</a>
-      <a class="boton-contacto" href="/acerca/#contacto">Escríbeme</a>
-    </div>
-    <Redes />
-    </div>
-  </section>
+<Base seccion="seccion-inicio" completo>
+  <Presentacion />
+  <CapituloDerecho articulos={derecho} catedra={catedra} />
 
-  <div class="caminos">
-    <a class="camino camino-luz" href="/la-luz/">
-      <span class="camino-texto">
-        <span class="etiqueta">Libro en curso</span>
-        <span class="camino-titulo">La luz, guardián del universo</span>
-        <span class="camino-bajada">
-          La luz como límite, archivo y mensajera del universo, entre la física y el símbolo.
-        </span>
-        <span class="camino-meta">
-          {ultima
-            ? <>Entrega {ultima.data.entrega} de {TOTAL_ENTREGAS}: {ultima.data.titulo}</>
-            : <>Primera entrega próximamente</>}
-        </span>
-      </span>
-      {imagenLuz && <img class="camino-img" src={imagenLuz} alt="" width="1200" height="630" />}
-    </a>
+  <div class="mundos">
+    <header class="umbral">
+      <div class="wrap umbral-interior">
+        <span class="cap-numero" aria-hidden="true">II</span>
+        <div>
+          <p class="cap-etiqueta">Los ensayos</p>
+          <h2 class="umbral-titulo">Lo que escribo cuando cierro el expediente</h2>
+          <p class="umbral-texto">
+            Dos ensayos por entregas, cada uno con su ritmo y su propio mundo: uno mira la luz
+            entre la física y el símbolo; el otro, lo que perdemos cada vez que el saber cambia de soporte.
+          </p>
+        </div>
+      </div>
+    </header>
 
-    <a class="camino camino-papel" href="/derecho/">
-      <span class="etiqueta">Norma y Proceso</span>
-      <span class="camino-titulo">La norma no se cumple con criterio. Se cumple con proceso.</span>
-      <span class="camino-bajada">Derecho societario y tributario para pymes y emprendedores, en el punto donde la teoría se encuentra con la práctica.</span>
-      <span class="camino-meta">
-        {derecho.length
-          ? <>Último: {derecho[0].data.titulo} · {fechaTexto(derecho[0].data.fecha)}</>
-          : <>Primer artículo próximamente</>}
-      </span>
-    </a>
+    <EnsayoBanda
+      mundo="luz"
+      href="/la-luz/"
+      titulo="La luz, guardián del universo"
+      descripcion="La luz como límite, archivo y mensajera del universo, entre la física y el símbolo."
+      ritmo="cada miércoles"
+      entregas={luz}
+      total={TOTAL_ENTREGAS}
+      proxima={proximaDe('luz')}
+      imagenPorDefecto="/img/entregas/01-el-guardian.svg"
+    />
 
+    <EnsayoBanda
+      mundo="escritura"
+      href="/escritura/"
+      titulo="Lo que se pierde al escribir"
+      descripcion="La escritura, la memoria y lo que cambia cada vez que el saber cambia de soporte, hasta la inteligencia artificial."
+      ritmo="un domingo sí y uno no"
+      entregas={escritura}
+      total={TOTAL_ESCRITURA}
+      proxima={proximaDe('escritura')}
+      imagenPorDefecto="/img/escritura/01-volver-a-la-voz.svg"
+      invertida
+    />
   </div>
 
-  <section class="banda-proyecto" aria-labelledby="proyecto-titulo">
-    <a class="banda-marca" href="https://www.simplificalo.cl" rel="noopener">
-      <img src="/img/simplificalo.png" alt="Simplificalo, soluciones legales y tributarias" width="900" height="252" />
-    </a>
-    <div class="banda-texto">
-      <p class="etiqueta">Emprendimiento</p>
-      <h2 id="proyecto-titulo">Simplificalo, mi primer proyecto</h2>
-      <p>
-        Fundé Simplificalo, una plataforma chilena que automatiza la contabilidad y el
-        cumplimiento tributario de pequeñas y medianas empresas: declaraciones,
-        facturación, conciliación bancaria y un portal propio para cada cliente.
-        Muchas de las ideas de Norma y Proceso nacen ahí, de ver qué ocurre cuando una
-        norma se aplica doscientas veces al mes.
-      </p>
-      <a class="banda-enlace" href="https://www.simplificalo.cl" rel="noopener">Visitar simplificalo.cl →</a>
-    </div>
-  </section>
+  <ProximasEntregas />
 </Base>

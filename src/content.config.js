@@ -43,4 +43,18 @@ const catedra = defineCollection({
   }),
 });
 
-export const collections = { derecho, ensayo, catedra };
+// Sección "Lo que se pierde al escribir": segundo ensayo por entregas.
+const escritura = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/escritura' }),
+  schema: z.object({
+    titulo: z.string(),
+    bajada: z.string(),
+    entrega: z.number(),
+    fecha: z.coerce.date().optional(),
+    lectura: z.string().optional(),
+    imagen: z.string().optional(),
+    borrador: z.boolean().default(false),
+  }),
+});
+
+export const collections = { derecho, ensayo, catedra, escritura };

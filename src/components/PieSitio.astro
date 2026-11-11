@@ -1,0 +1,32 @@
+---
+// Pie del sitio: firma breve, secciones y redes. El nombre va solo en la línea de derechos.
+import Redes from './Redes.astro';
+const anio = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap pie">
+    <div class="pie-firma">
+      <p>Abogado. Derecho societario y tributario para pymes y emprendedores.</p>
+      <a class="pie-escribeme" href="/acerca/#contacto">Escríbeme →</a>
+    </div>
+    <nav class="pie-columna" aria-label="Derecho">
+      <p class="pie-titulo">Derecho</p>
+      <a href="/derecho/">Norma y Proceso</a>
+      <a href="/catedra/">Cátedra</a>
+      <a href="https://www.simplificalo.cl" rel="noopener">Simplificalo</a>
+    </nav>
+    <nav class="pie-columna" aria-label="Ensayos">
+      <p class="pie-titulo">Ensayos</p>
+      <a href="/la-luz/">La luz, guardián del universo</a>
+      <a href="/escritura/">Lo que se pierde al escribir</a>
+      <a href="/ensayos/">Calendario de lectura</a>
+    </nav>
+    <div class="pie-redes">
+      <Redes />
+      <p class="lugar">Puerto Montt · 41°28′ S</p>
+    </div>
+  </div>
+  <div class="wrap pie-final">
+    <p>© {anio} Felipe Silva Landeros · <a href="/acerca/">Acerca</a></p>
+  </div>
+</footer>

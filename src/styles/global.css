@@ -467,7 +467,6 @@ a:focus-visible { outline: 2px solid var(--oro); outline-offset: 3px; }
 .seguir p { margin: 0 0 0.9rem !important; font-family: var(--display); font-size: 1.45rem; line-height: 1.2; color: var(--tinta); }
 .seccion-luz .seguir { background: transparent; }
 .presentacion .redes { margin-top: 1.5rem; }
-.camino-papel { grid-column: 1 / -1; }
 
 /* Menú en teléfonos: nombre arriba, secciones en una sola línea */
 @media (max-width: 40rem) {
@@ -486,3 +485,192 @@ a:focus-visible { outline: 2px solid var(--oro); outline-offset: 3px; }
   .presentacion.con-foto { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
   .foto-autor { order: 0; width: 6.5rem; }
 }
+
+/* ---------- Lo que se pierde al escribir: arcilla y tinta ---------- */
+:root { --arcilla: #a35a3a; --arcilla-2: #efe2d3; --arcilla-tinta: #3b2418; }
+.seccion-escritura .site-header { background: var(--arcilla-2); }
+.arcilla {
+  color: var(--arcilla-tinta);
+  background:
+    repeating-linear-gradient(0deg, rgba(163, 90, 58, 0.06) 0 1px, transparent 1px 30px),
+    radial-gradient(120% 100% at 85% 0%, #f6ece0, transparent 70%),
+    var(--arcilla-2);
+  border-bottom: 1px solid rgba(163, 90, 58, 0.25);
+  padding-block: 3.5rem 3rem;
+}
+.arcilla-alta { padding-block: 4.5rem 3.5rem; }
+.arcilla .etiqueta { color: var(--arcilla); }
+.titulo-arcilla { font-family: var(--display); font-weight: 400; font-size: clamp(2.4rem, 6vw, 3.6rem); line-height: 1.02; margin: 0.4rem 0 1.2rem; }
+.titulo-arcilla.grande { font-size: clamp(2.8rem, 7.5vw, 4.6rem); }
+.epigrafe-arcilla { border-left: 2px solid var(--arcilla); padding-left: 1.1rem; }
+.epigrafe-arcilla p { color: #6b4a3a; }
+.epigrafe-arcilla cite { color: var(--arcilla); }
+.seccion-escritura .articulo-head .etiqueta, .seccion-escritura .aviso-borrador { color: var(--arcilla); }
+.indice-escritura .indice-num { color: var(--arcilla); }
+
+.camino-escritura { color: var(--arcilla-tinta); background: var(--arcilla-2); border: 1px solid rgba(163, 90, 58, 0.25); }
+.camino-escritura .etiqueta, .camino-escritura .camino-meta { color: var(--arcilla); }
+.camino-escritura .camino-bajada { color: #6b4a3a; }
+
+/* ---------- Calendario de lectura ---------- */
+.calendario { margin: 0 0 4rem; padding: 2rem 0 0; border-top: 1px solid var(--linea); }
+.calendario-head h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.4vw, 2.3rem); margin: 0.3rem 0 0.6rem; }
+.calendario-leyenda { font-family: var(--sans); font-size: 0.9rem; color: var(--tinta-suave); display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; margin: 0 0 1.5rem; }
+.punto { display: inline-block; width: 0.7rem; height: 0.7rem; border-radius: 50%; margin-left: 0.4rem; }
+.punto:first-child { margin-left: 0; }
+.punto-luz, .cal-luz .cal-marca { background: var(--noche); box-shadow: inset 0 0 0 2px var(--oro-noche); }
+.punto-escritura, .cal-escritura .cal-marca { background: var(--arcilla); }
+.calendario-lista { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.6rem; position: relative; }
+.calendario-lista::before { content: ""; position: absolute; left: 0; right: 0; top: 2.35rem; border-top: 1px dashed var(--linea); }
+.cal-item { position: relative; display: flex; flex-direction: column; gap: 0.35rem; padding: 0.9rem 0.9rem 1rem; border-radius: 6px; min-width: 0; }
+.cal-dia { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.04em; text-transform: capitalize; color: var(--tinta-suave); }
+.cal-marca { width: 0.9rem; height: 0.9rem; border-radius: 50%; position: relative; z-index: 1; }
+.cal-serie { font-family: var(--display); font-size: 1.15rem; line-height: 1.12; }
+.cal-entrega { font-family: var(--sans); font-size: 0.8rem; }
+.cal-luz { background: var(--noche); color: var(--estrella); }
+.cal-luz .cal-dia, .cal-luz .cal-entrega { color: var(--oro-noche); }
+.cal-escritura { background: var(--arcilla-2); color: var(--arcilla-tinta); border: 1px solid rgba(163, 90, 58, 0.25); }
+.cal-escritura .cal-dia, .cal-escritura .cal-entrega { color: var(--arcilla); }
+@media (max-width: 56rem) { .calendario-lista { grid-template-columns: repeat(3, minmax(0, 1fr)); } .calendario-lista::before { display: none; } }
+@media (max-width: 40rem) {
+  .calendario-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .site-header nav { gap: 0.6rem; font-size: 0.8rem; }
+}
+.leyenda-item { display: inline-flex; align-items: center; gap: 0.45rem; margin-right: 1rem; }
+.leyenda-item .punto { margin-left: 0; }
+
+/* Portada: Norma y Proceso primero; los dos ensayos debajo, lado a lado */
+.camino-principal { grid-column: 1 / -1; padding: 2.25rem 2rem; }
+.camino-principal .camino-titulo { font-size: clamp(2.1rem, 4.4vw, 3rem); }
+.caminos .camino-luz { grid-column: auto; display: flex; flex-direction: column; padding: 1.75rem 1.6rem 1.5rem; }
+.caminos .camino-luz .camino-titulo { font-size: clamp(1.7rem, 3.2vw, 2.1rem); }
+.caminos .camino-luz .camino-img { order: -1; margin-bottom: 0.4rem; }
+.camino-escritura .camino-img { margin-bottom: 0.4rem; }
+
+/* ---------- Refresh: una sola mención del nombre y portada por grupos ---------- */
+.presentacion h1.lema { font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.05; text-wrap: balance; }
+.grupo-titulo { display: flex; align-items: center; gap: 1rem; margin: 0 0 1rem; font-family: var(--sans); font-weight: 500; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tinta-suave); }
+.grupo-titulo::after { content: ""; flex: 1; border-top: 1px solid var(--linea); }
+.caminos + .grupo-titulo { margin-top: -1.5rem; }
+.camino-principal { grid-column: auto; }
+
+/* ---------- Refresh 2: monograma, jerarquía del derecho, ensayos compactos ---------- */
+.brand { display: inline-flex; align-items: center; gap: 0.75rem; }
+.monograma {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2.3rem; height: 2.3rem; border: 1px solid currentColor;
+  font-family: var(--display); font-size: 1.15rem; letter-spacing: 0.06em; line-height: 1;
+}
+.brand-nombre { font-family: var(--serif); font-size: 0.95rem; color: var(--tinta-suave); transition: opacity 0.2s ease; }
+/* En la portada el nombre ya está grande en la presentación: en la barra solo aparece al bajar */
+.con-nombre-principal .brand-nombre { opacity: 0; }
+.con-nombre-principal.nombre-fuera .brand-nombre { opacity: 1; }
+.seccion-luz .brand-nombre { color: rgba(233, 220, 184, 0.75); }
+
+.menu-movil { display: none; position: relative; }
+.menu-movil summary { list-style: none; cursor: pointer; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.55rem 0.9rem; border: 1px solid var(--linea); border-radius: 4px; color: var(--tinta); }
+.menu-movil summary::-webkit-details-marker { display: none; }
+.menu-movil nav { position: absolute; right: 0; top: calc(100% + 0.5rem); z-index: 20; display: flex; flex-direction: column; gap: 0; min-width: 13rem; background: var(--papel); border: 1px solid var(--linea); border-radius: 6px; box-shadow: 0 16px 30px -18px rgba(15, 20, 36, 0.45); padding: 0.4rem 0; }
+.menu-movil nav a { padding: 0.75rem 1.1rem; color: var(--tinta); text-decoration: none; font-family: var(--sans); font-size: 0.95rem; border: 0; }
+.menu-movil nav a:hover { background: var(--papel-2); }
+
+.presentacion .lema { font-family: var(--display); font-style: italic; font-size: clamp(1.4rem, 2.6vw, 1.7rem); line-height: 1.25; color: var(--tinta); margin: 0.2rem 0 1rem; }
+
+.bloque-derecho { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 1rem; margin-bottom: 3.5rem; }
+.np { background: var(--papel); border: 1px solid var(--linea); border-top: 2px solid var(--lacre); border-radius: 6px; padding: 1.75rem 1.75rem 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; }
+.np .etiqueta { color: var(--lacre); }
+.np-lema { font-family: var(--display); font-style: italic; font-size: 1.15rem; color: var(--tinta-suave); margin: 0 0 0.6rem; }
+.np-destacado { display: flex; flex-direction: column; gap: 0.45rem; text-decoration: none; color: var(--tinta); padding-bottom: 1.1rem; border-bottom: 1px solid var(--linea); }
+.np-titulo { font-family: var(--display); font-size: clamp(1.7rem, 3vw, 2.1rem); line-height: 1.08; }
+.np-destacado:hover .np-titulo { color: var(--lacre); }
+.np-bajada { font-size: 1.05rem; line-height: 1.5; color: var(--tinta-suave); }
+.np-lista { list-style: none; margin: 0.4rem 0 0; padding: 0; }
+.np-lista li { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.6rem 0; border-bottom: 1px solid var(--linea); }
+.np-lista a { color: var(--tinta); text-decoration: none; font-size: 1.05rem; }
+.np-lista a:hover { color: var(--lacre); }
+.np-lista .meta { white-space: nowrap; }
+.np-todos { margin-top: 0.8rem; font-family: var(--sans); font-size: 0.9rem; color: var(--lacre); text-decoration: none; }
+.cat-col { justify-content: flex-start; }
+
+.banda-compacta { margin: 0 0 3.5rem; padding: 1.5rem 0; }
+.banda-compacta .banda-marca { max-width: 160px; }
+.banda-compacta h2 { font-size: 1.5rem; margin: 0 0 0.3rem; }
+.banda-compacta p { font-size: 1rem; margin: 0 0 0.5rem; }
+
+.ensayos-filas { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.ensayo-fila { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1rem; border: 1px solid var(--linea); border-radius: 6px; text-decoration: none; color: var(--tinta); transition: background 0.2s ease; }
+.ensayo-fila:hover { background: var(--papel-2); }
+.ef-marca { flex: none; width: 3.5rem; height: 3.5rem; border-radius: 4px; }
+.ef-luz .ef-marca { background: radial-gradient(circle at 35% 35%, #f3e3b5 0 10%, transparent 11%), radial-gradient(120% 120% at 85% 0%, var(--noche-2), transparent 65%), var(--noche); }
+.ef-escritura .ef-marca { background: repeating-linear-gradient(0deg, rgba(59, 36, 24, 0.25) 0 2px, transparent 2px 9px), #d9a882; }
+.ef-texto { display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; flex: 1; }
+.ef-titulo { font-family: var(--display); font-size: 1.4rem; line-height: 1.1; }
+.ef-meta { font-family: var(--sans); font-size: 0.85rem; color: var(--tinta-suave); }
+.ef-flecha { color: var(--tinta-suave); font-size: 1.2rem; }
+.ensayos-todos { margin: 0.9rem 0 3rem; font-family: var(--sans); font-size: 0.9rem; }
+
+@media (max-width: 45rem) {
+  .nav-principal { display: none !important; }
+  .menu-movil { display: block; }
+  .barra { flex-direction: row !important; align-items: center !important; }
+  .brand-nombre { display: none; }
+  .bloque-derecho { grid-template-columns: minmax(0, 1fr); }
+  .np { padding: 1.4rem 1.2rem; }
+  .np-lista li { flex-direction: column; gap: 0.15rem; }
+  .foto-autor { width: 5.5rem !important; }
+  .presentacion h1 { font-size: 2.6rem; }
+}
+
+/* =====================================================================
+   Diseño B · Barra superior y pie
+   La barra no repite el nombre: a la izquierda va un sello con la foto
+   (vuelve al inicio) y en la portada no aparece, porque el nombre ya
+   está grande en la presentación.
+   ===================================================================== */
+.barra { align-items: center; padding-block: 0.95rem; min-height: 4.4rem; }
+.sello { display: inline-flex; align-items: center; text-decoration: none; border-radius: 50%; }
+.sello img {
+  display: block; width: 2.5rem; height: 2.5rem; border-radius: 50%; object-fit: cover;
+  border: 1px solid var(--linea); transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.sello:hover img { transform: scale(1.06); box-shadow: 0 6px 16px -8px rgba(15, 20, 36, 0.5); }
+.seccion-luz .sello img { border-color: rgba(233, 220, 184, 0.3); }
+.es-portada .sello { visibility: hidden; }
+.es-portada .site-header { border-bottom-color: transparent; }
+.site-header .nav-principal { align-items: center; gap: 1.6rem; font-size: 0.95rem; letter-spacing: 0.01em; }
+
+/* Pie */
+.site-footer { margin-top: 0; border-top: 1px solid var(--linea); background: var(--papel); }
+.pie {
+  display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(0, 1fr)) auto;
+  gap: 2rem 3rem; padding-block: 3.25rem 2.5rem; align-items: start;
+}
+.pie p { margin: 0; }
+.pie-firma { display: flex; flex-direction: column; gap: 0.5rem; max-width: 22rem; font-size: 0.92rem; line-height: 1.5; }
+.pie-nombre { font-family: var(--display); font-size: 1.75rem; line-height: 1; color: var(--tinta); margin-bottom: 0.25rem !important; }
+.pie-escribeme { align-self: flex-start; margin-top: 0.4rem; color: var(--lacre); text-decoration: none; border-bottom: 1px solid currentColor; }
+.pie-columna { display: flex; flex-direction: column; gap: 0.55rem; }
+.pie-columna a { color: var(--tinta); text-decoration: none; }
+.pie-columna a:hover { color: var(--lacre); }
+.pie-titulo { font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--tinta-suave); margin-bottom: 0.3rem !important; }
+.pie-redes { display: flex; flex-direction: column; align-items: flex-end; gap: 1rem; }
+.pie-final { padding-block: 0 1.6rem; font-family: var(--sans); font-size: 0.8rem; color: var(--tinta-suave); }
+.pie-final p { margin: 0; padding-top: 1.1rem; border-top: 1px solid var(--linea); }
+.pie-final a { color: inherit; }
+.cuerpo + .site-footer { margin-top: 5rem; }
+
+@media (max-width: 56rem) {
+  .pie { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pie-firma { grid-column: 1 / -1; }
+  .pie-redes { grid-column: 1 / -1; flex-direction: row; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+}
+@media (max-width: 45rem) {
+  .barra { min-height: 4rem; }
+}
+@media (max-width: 30rem) {
+  .pie { gap: 1.75rem 1.25rem; padding-block: 2.5rem 2rem; font-size: 0.82rem; }
+  .pie-columna { gap: 0.6rem; }
+}
+@media (prefers-reduced-motion: reduce) { .sello img { transition: none; } }
+.site-header .menu-movil nav { align-items: stretch; text-align: left; white-space: normal; }
+.seccion-luz .menu-movil summary { color: var(--estrella); border-color: rgba(233, 220, 184, 0.3); }

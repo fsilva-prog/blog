@@ -1,14 +1,15 @@
 ---
 import '../styles/global.css';
-import Redes from '../components/Redes.astro';
+import PieSitio from '../components/PieSitio.astro';
 
-const { title, description, seccion = '', imagen, lateral = true } = Astro.props;
+// completo: la página maneja sus propios anchos (la portada, con bandas a todo el ancho).
+const { title, description, seccion = '', imagen, lateral = true, completo = false } = Astro.props;
 const imagenAbs = imagen ? new URL(imagen, Astro.site ?? Astro.url).href : undefined;
 const nombre = 'Felipe Silva Landeros';
 const fullTitle = title ? `${title} · ${nombre}` : nombre;
-const desc = description || 'Felipe Silva Landeros, abogado. Derecho societario y tributario para pymes y emprendedores, y un ensayo por entregas sobre la luz, la ciencia y el símbolo.';
+const desc = description || 'Felipe Silva Landeros, abogado. Derecho societario y tributario para pymes y emprendedores, y dos ensayos por entregas: la luz, entre la ciencia y el símbolo, y lo que se pierde al escribir.';
 const ruta = Astro.url.pathname;
-const activo = (p) => (ruta.startsWith(p) ? 'activo' : '');
+const activo = (...ps) => (ps.some((p) => ruta.startsWith(p)) ? 'activo' : '');
 ---
 
 <!doctype html>
@@ -31,13 +32,26 @@ const activo = (p) => (ruta.startsWith(p) ? 'activo' : '');
       href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans+Condensed:wght@400;500&display=swap"
     />
   </head>
-  <body class={seccion}>
+  <body class:list={[seccion, { "es-portada": ruta === "/" }]}>
     <header class="site-header">
       <div class="wrap barra">
-        <a href="/" class="brand">Felipe Silva Landeros</a>
-        <nav aria-label="Secciones">
-          <a href="/la-luz/" class={activo('/la-luz')}>La luz</a>
+        <a href="/" class="sello" aria-label="Inicio">
+          <img src="/img/felipe.jpg" alt="" width="72" height="72" />
+        </a>
+        <details class="menu-movil">
+          <summary>Menú</summary>
+          <nav aria-label="Secciones (móvil)">
+            <a href="/derecho/">Norma y Proceso</a>
+            <a href="/catedra/">Cátedra</a>
+            <a href="/ensayos/">Ensayos</a>
+            <a href="/acerca/">Acerca</a>
+            <a href="/acerca/#contacto">Contacto</a>
+          </nav>
+        </details>
+        <nav class="nav-principal" aria-label="Secciones">
           <a href="/derecho/" class={activo('/derecho')}>Norma y Proceso</a>
+          <a href="/catedra/" class={activo('/catedra')}>Cátedra</a>
+          <a href="/ensayos/" class={activo('/ensayos', '/la-luz', '/escritura')}>Ensayos</a>
           <a href="/acerca/" class={activo('/acerca')}>Acerca</a>
           <a href="/acerca/#contacto" class="nav-contacto">Contacto</a>
         </nav>
@@ -46,6 +60,9 @@ const activo = (p) => (ruta.startsWith(p) ? 'activo' : '');
 
     <slot name="portada" />
 
+    {completo ? (
+      <main class="principal-completo"><slot /></main>
+    ) : (
     <div class:list={["wrap", "cuerpo", { "sin-lateral": !lateral }]}>
       <main class="principal">
         <slot />
@@ -67,16 +84,9 @@ const activo = (p) => (ruta.startsWith(p) ? 'activo' : '');
       </aside>
       )}
     </div>
+    )}
 
-    <footer class="site-footer">
-      <div class="wrap pie">
-        <div class="pie-izq">
-          <p>Felipe Silva Landeros · <a href="/acerca/#contacto">Escríbeme</a></p>
-          <Redes />
-        </div>
-        <p class="lugar">Puerto Montt · 41°28′ S</p>
-      </div>
-    </footer>
+    <PieSitio />
     <!-- Cloudflare Web Analytics: estadísticas privadas, sin cookies -->
     <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "eaa881d092354d3787e3d39377242d88"}'></script>
   </body>

@@ -6,9 +6,16 @@ import Redes from '../components/Redes.astro';
 // Plantilla común. variante="luz" usa la cabecera nocturna del ensayo.
 const { kicker, titulo, bajada, fecha, lectura, borrador, imagen, variante = 'papel' } = Astro.props;
 const esLuz = variante === 'luz';
+const esEscritura = variante === 'escritura';
+const seccion = esLuz ? 'seccion-luz' : esEscritura ? 'seccion-escritura' : variante === 'catedra' ? 'seccion-catedra' : 'seccion-papel';
+const invitacion = esLuz
+  ? 'Cada miércoles publico una nueva entrega. Para no perderte la siguiente, sígueme en:'
+  : esEscritura
+    ? 'Publico una nueva entrega un domingo sí y uno no. Para no perderte la siguiente, sígueme en:'
+    : 'Casi todos los días publico contenido breve sobre estos temas. Sígueme en:';
 ---
 
-<Base title={titulo} description={bajada} imagen={imagen} lateral={!esLuz} seccion={esLuz ? 'seccion-luz' : variante === 'catedra' ? 'seccion-catedra' : 'seccion-papel'}>
+<Base title={titulo} description={bajada} imagen={imagen} lateral={!esLuz && !esEscritura} seccion={seccion}>
   {esLuz && <div class="progreso" aria-hidden="true"><span></span></div>}
   {esLuz && (
     <header slot="portada" class="noche">
@@ -52,7 +59,7 @@ const esLuz = variante === 'luz';
     </div>
 
     <aside class="seguir" aria-label="Sígueme">
-      <p>{esLuz ? 'Cada miércoles publico una nueva entrega. Para no perderte la siguiente, sígueme en:' : 'Casi todos los días publico contenido breve sobre estos temas. Sígueme en:'}</p>
+      <p>{invitacion}</p>
       <Redes conNombre />
     </aside>
 
