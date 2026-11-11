@@ -5,7 +5,7 @@ entrega: 5
 parte: "Segunda parte: El símbolo"
 lectura: "7 minutos"
 imagen: "/img/entregas/05-la-luz-que-abrio-los-ojos.png"
-borrador: true
+borrador: false
 fecha: "2026-11-11"
 ---
 
