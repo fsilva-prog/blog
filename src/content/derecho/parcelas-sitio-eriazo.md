@@ -5,7 +5,7 @@ tema: "Impuesto territorial · Avalúos"
 fecha: "2026-11-12"
 lectura: "9 minutos"
 imagen: "/img/derecho/parcelas-sitio-eriazo.png"
-borrador: true
+borrador: false
 ---
 
 Quien tiene una parcela en Los Lagos o en cualquier otra región del sur, de esas que nacieron de la subdivisión de un predio más grande, probablemente nunca ha mirado con atención su certificado de avalúo fiscal. Si lo hiciera, en muchos casos encontraría dos datos que no calzan con lo que ve cuando llega al terreno: que el predio está clasificado en la serie de bienes raíces no agrícolas, y que su destino es «sitio eriazo». Detrás de esas dos líneas hay un avalúo bastante más alto que el de los campos vecinos, y unas contribuciones que poco tienen que ver con lo que rinde un campo.
