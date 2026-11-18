@@ -5,7 +5,7 @@ entrega: 6
 parte: "Tercera parte: Los bordes"
 lectura: "6 minutos"
 imagen: "/img/entregas/06-generaciones-sin-cielo.png"
-borrador: true
+borrador: false
 fecha: "2026-11-18"
 ---
 
