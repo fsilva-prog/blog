@@ -10,7 +10,7 @@ borrador: false
 
 Hay operaciones que uno cree resueltas hasta que se ponen a volumen. La nota de crédito es una de ellas. Se emite, se registra, se rebaja del débito fiscal y nadie vuelve a mirarla. El problema empieza cuando la factura que se está anulando contenía a la vez montos afectos a IVA y montos exentos, porque en ese caso la rebaja no es una sino dos, y van a códigos distintos del formulario.
 
-Es un caso más común de lo que parece. Una empresa que vende equipos y a la vez presta un servicio exento en la misma factura. Un contrato que incluye bienes gravados y una indemnización que no lo está. Una venta con flete facturado por separado dentro del mismo documento. En todos esos casos la factura es mixta, y cuando se anula parcialmente hay que decidir qué parte se está anulando.
+Es un caso más común de lo que parece. Una empresa que vende equipos y a la vez presta un servicio exento en la misma factura. Un contrato que incluye bienes gravados y una indemnización que no lo está. Una venta de bienes con un flete internacional facturado dentro del mismo documento. En todos esos casos la factura es mixta, y cuando se anula parcialmente hay que decidir qué parte se está anulando.
 
 ## Qué dice la norma
 
@@ -18,13 +18,13 @@ El punto de partida es el artículo 21 del D.L. 825, que permite deducir del dé
 
 Ahí está la clave que suele pasarse por alto: **la nota de crédito no genera un tratamiento propio, hereda el de la operación que corrige.** Si la operación original tenía una parte afecta y una exenta, la nota de crédito que la deja sin efecto tiene también dos naturalezas, y no puede tratarse como un bloque único.
 
-Por el lado del comprador, el artículo 23 N°3 del mismo cuerpo legal establece la regla de proporcionalidad cuando se realizan simultáneamente operaciones gravadas y exentas: el crédito fiscal debe calcularse en la proporción que corresponda. Cuando llega una nota de crédito sobre una factura mixta, el ajuste al crédito fiscal tiene que respetar esa misma proporción, no aplicarse al total del documento.
+Por el lado del comprador, el artículo 24 obliga a rebajar del crédito fiscal el IVA de las notas de crédito recibidas. Si la nota imputa IVA a una parte que era exenta, el comprador rebaja también más crédito del que corresponde. La proporcionalidad del artículo 23 N°3 entra en juego solo si el propio comprador realiza operaciones gravadas y exentas.
 
 ## Qué pasa en la práctica
 
 Lo que ocurre en la mayoría de los procesos contables es una de estas dos cosas.
 
-La primera es que la nota de crédito se imputa completa al monto afecto. Es lo más simple y lo que hace por defecto casi cualquier planilla: se toma el total del documento, se calcula el IVA hacia atrás y se rebaja. El resultado es que se rebaja más débito fiscal del que corresponde, porque una parte de lo anulado nunca estuvo gravada. Sobra crédito, falta impuesto, y la diferencia queda dormida hasta una fiscalización.
+La primera es que la nota de crédito se imputa completa al monto afecto. Es lo más simple y lo que hace por defecto casi cualquier planilla: se toma el total del documento, se calcula el IVA hacia atrás y se rebaja. El resultado es que se rebaja más débito fiscal del que corresponde, porque una parte de lo anulado nunca estuvo gravada. Sobra rebaja de débito, falta impuesto, y la diferencia queda dormida hasta una fiscalización.
 
 La segunda es la inversa y es más frecuente de lo que uno esperaría: la nota de crédito se registra completa como exenta, típicamente porque el sistema tomó el tipo de la última línea del documento o porque quien la registró vio que el motivo de la anulación era un servicio. Ahí se rebaja de menos y la empresa termina pagando un impuesto que no debía.
 
@@ -32,9 +32,9 @@ Ninguno de los dos errores exige desconocimiento de la norma. Los he visto en em
 
 ## El problema de fondo no es normativo
 
-Aquí está, creo, lo que hace interesante este caso. Para tratar bien una nota de crédito mixta hay que saber tres cosas: cuánto del documento original era afecto, cuánto era exento, y a cuál de esos dos componentes corresponde el monto que se está anulando. Las dos primeras están en la factura. **La tercera no está en ninguna parte.**
+Aquí está, creo, lo que hace interesante este caso. Para tratar bien una nota de crédito mixta hay que saber tres cosas: cuánto del documento original era afecto, cuánto era exento, y a cuál de esos dos componentes corresponde el monto que se está anulando. Las dos primeras están en la factura. **La tercera depende enteramente de quien emite la nota de crédito.**
 
-La nota de crédito, como documento, indica un monto y una referencia al documento que corrige. No indica qué línea de ese documento está dejando sin efecto. Si se anula el total no hay problema, porque se anulan las dos partes en su proporción original. Pero si se anula parcialmente —un descuento posterior, una devolución de parte de la mercadería, una corrección de precio— la imputación es una decisión que alguien tiene que tomar, y esa decisión no viene en los datos.
+La nota de crédito electrónica permite separar el monto afecto del exento, pero su referencia apunta al documento que corrige y no a la línea que deja sin efecto. Esa separación queda bien solo si quien la emite la hace correctamente. Si se anula el total no hay problema, porque se anulan las dos partes en su proporción original. Pero si se anula parcialmente —un descuento posterior, una devolución de parte de la mercadería, una corrección de precio— la imputación es una decisión que alguien tiene que tomar, y esa decisión no viene en los datos.
 
 Por eso el problema no se resuelve capacitando mejor a quien registra. Se resuelve cambiando el momento en que se captura la información: la imputación tiene que definirse cuando se emite la nota de crédito, por quien conoce el motivo de la anulación, y no después, por quien solo ve un monto total en un registro.
 

@@ -22,7 +22,7 @@ Por eso, cuando alguien emprende como persona natural, aunque tenga una cuenta c
 
 Cuando se constituye una sociedad pasa algo que, si uno lo piensa, es bastante notable: nace una persona que antes no existía. El Código Civil la define en su artículo 545 como una persona ficticia, capaz de ejercer derechos y contraer obligaciones civiles, y de ser representada judicial y extrajudicialmente. Y el artículo 2053 lo aplica a las sociedades con una frase que vale la pena leer despacio: la sociedad forma una persona jurídica, distinta de los socios individualmente considerados.
 
-Esa nueva persona tiene su propio patrimonio. Lo que los socios aportan deja de ser de ellos y pasa a ser de la sociedad, y las deudas que la sociedad contrae son de ella. En las sociedades de responsabilidad limitada, en las sociedades por acciones y en las anónimas, la ley agrega que los socios responden solo hasta el monto de sus aportes. Ahí está la separación de patrimonios: dos personas, dos conjuntos de bienes y deudas, y una frontera entre ellos.
+Esa nueva persona tiene su propio patrimonio. Lo que los socios aportan deja de ser de ellos y pasa a ser de la sociedad, y las deudas que la sociedad contrae son de ella. En las sociedades de responsabilidad limitada, en las sociedades por acciones y en las anónimas, la ley agrega que los socios responden, en principio, solo hasta el monto de sus aportes. Ahí está la separación de patrimonios: dos personas, dos conjuntos de bienes y deudas, y una frontera entre ellos.
 
 Lo mismo ocurre, con una sola persona detrás, en la empresa individual de responsabilidad limitada. No es una sociedad, pero sí es una persona jurídica distinta de su titular, con patrimonio propio.
 
