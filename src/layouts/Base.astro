@@ -31,6 +31,7 @@ const activo = (...ps) => (ps.some((p) => ruta.startsWith(p)) ? 'activo' : '');
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans+Condensed:wght@400;500&display=swap"
     />
+    <script is:inline>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"bf6b4a1e60ffa099c93e6f75d6ceca8"})});</script>
   </head>
   <body class:list={[seccion, { "es-portada": ruta === "/" }]}>
     <header class="site-header">
