@@ -2,10 +2,10 @@
 titulo: "El peaje del IUSIF está en el calendario"
 bajada: "Pagar el impuesto sustitutivo deja limpias las utilidades antiguas, pero si después esa plata pasa por varias sociedades del grupo dentro del mismo año, el reajuste puede generar impuesto en sociedades que no ganaron nada. El costo depende de cuándo y por qué sociedades se reparta."
 tema: "Renta · Impuesto sustitutivo"
-fecha: "2026-11-23"
+fecha: "2026-11-22"
 lectura: "8 minutos"
 imagen: "/img/derecho/iusif-reajuste.png"
-borrador: true
+borrador: false
 ---
 
 La Ley 21.850, publicada el 17 de octubre, permite por un plazo acotado limpiar utilidades antiguas pagando un impuesto menor. Sus artículos undécimo y duodécimo transitorios establecieron un impuesto único y sustitutivo de los impuestos finales, que el Servicio de Impuestos Internos identifica con la sigla IUSIF, con una tasa de 10% y sin derecho a usar créditos. Se aplica, por una parte, al FUR y al STUT, que es el saldo de utilidades del antiguo FUT, este último por el menor valor entre su saldo y el del registro RAI a la misma fecha, y por otra, a los retiros en exceso pendientes de imputación. Se declara y paga en el Formulario 50, según el procedimiento que fijó la Resolución Exenta N° 141 del SII, de 19 de octubre, y el plazo para acogerse corre hasta el 17 de junio de 2027.
