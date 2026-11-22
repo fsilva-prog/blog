@@ -144,6 +144,10 @@ Lo que falta es bastante. El SII no ha dictado ninguna circular definitiva sobre
 
 Voy a actualizar esta guía a medida que el SII publique las circulares.
 
+## Si quieres revisar tu caso
+
+Varias de estas medidas solo se pueden evaluar con los números de cada empresa y de cada familia. Si quieres ver cómo se aplica la ley a tu caso, por ejemplo si te conviene el impuesto sustitutivo, cómo ordenar una donación a tus hijos o qué deudas puedes regularizar antes de que venzan los plazos, puedes escribirme desde el [formulario de contacto](/acerca/#contacto) y lo revisamos juntos.
+
 ## Fuentes
 
 - [Ley N° 21.850, Diario Oficial N° 44.576-B, 17-10-2026](https://www.diariooficial.interior.gob.cl/publicaciones/2026/10/17/44576-B/01/2888352.pdf)

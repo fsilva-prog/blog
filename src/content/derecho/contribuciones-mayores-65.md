@@ -39,3 +39,5 @@ La misma ley abrió, entre diciembre de 2026 y noviembre de 2027, la posibilidad
 ## Lo que todavía no está claro
 
 Hay una diferencia entre lo que dice la ley y lo que ha informado el SII sobre la periodicidad de la declaración. La ley habla de una declaración jurada anual, que vale mientras no cambie la situación que la justifica, y el SII ha dicho que se presenta solo la primera vez y que después se renueva automáticamente. En la práctica, lo importante ahora es presentarla antes del 31 de diciembre, y estar atento a lo que el SII precise para los años siguientes.
+
+Preparé además una [guía completa de la Ley 21.850 para emprendedores y dueños de pymes](/derecho/ley-21850-guia-pymes/), con todos los plazos. Si tienes dudas sobre tu caso o el de tus padres, puedes escribirme desde el [formulario de contacto](/acerca/#contacto).
