@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+<rect width="1200" height="630" fill="#ece8df"/><g opacity="0.35"><line x1="0" y1="30" x2="1200" y2="30" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="60" x2="1200" y2="60" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="90" x2="1200" y2="90" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="120" x2="1200" y2="120" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="150" x2="1200" y2="150" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="180" x2="1200" y2="180" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="210" x2="1200" y2="210" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="240" x2="1200" y2="240" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="270" x2="1200" y2="270" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="300" x2="1200" y2="300" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="330" x2="1200" y2="330" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="360" x2="1200" y2="360" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="390" x2="1200" y2="390" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="420" x2="1200" y2="420" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="450" x2="1200" y2="450" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="480" x2="1200" y2="480" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="510" x2="1200" y2="510" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="540" x2="1200" y2="540" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="570" x2="1200" y2="570" stroke="#d6cfc1" stroke-width="1"/><line x1="0" y1="600" x2="1200" y2="600" stroke="#d6cfc1" stroke-width="1"/></g>
+<text x="120" y="80" font-family="Helvetica,Arial" font-size="18" letter-spacing="4" fill="#1a1a1a">CONTRIBUCIONES DESPUÉS DE LOS 65</text>
+<g transform="translate(170,135) rotate(-3)">
+<rect width="330" height="380" fill="#fbfaf6" stroke="#1a1a1a" stroke-width="2"/>
+<rect width="330" height="80" fill="#7a2a2a"/>
+<text x="165" y="52" text-anchor="middle" font-family="Helvetica,Arial" font-size="24" letter-spacing="6" fill="#fbfaf6">DICIEMBRE</text>
+<text x="165" y="270" text-anchor="middle" font-family="Georgia,serif" font-size="170" fill="#1a1a1a">31</text>
+<text x="165" y="340" text-anchor="middle" font-family="Helvetica,Arial" font-size="15" letter-spacing="3" fill="#7a7468">2026</text>
+</g>
+<g transform="translate(660,140)">
+<path d="M0 150 L190 10 L380 150" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+<rect x="40" y="150" width="300" height="200" fill="#f7f5f0" stroke="#1a1a1a" stroke-width="2"/>
+<rect x="160" y="250" width="60" height="100" fill="#d9d4c8" stroke="#1a1a1a" stroke-width="2"/>
+<rect x="70" y="185" width="60" height="50" fill="#d9d4c8" stroke="#1a1a1a" stroke-width="1.5"/>
+<rect x="250" y="185" width="60" height="50" fill="#d9d4c8" stroke="#1a1a1a" stroke-width="1.5"/>
+<text x="190" y="115" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="40" fill="#7a2a2a">65+</text>
+<text x="190" y="390" text-anchor="middle" font-family="Helvetica,Arial" font-size="14" letter-spacing="3" fill="#7a2a2a">VIVIENDA PRINCIPAL · 100% EXENTA</text>
+</g>
+<text x="600" y="595" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="19" fill="#5a3a2a">el beneficio no llega solo: hay que declararlo</text>
+</svg>
