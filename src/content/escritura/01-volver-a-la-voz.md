@@ -5,7 +5,7 @@ entrega: 1
 fecha: "2026-11-22"
 lectura: "6 minutos"
 imagen: "/img/escritura/01-volver-a-la-voz.png"
-borrador: true
+borrador: false
 ---
 
 Durante buena parte de mi vida, aprender fue sinónimo de escribir. Los apuntes se tomaban a mano, con la letra que uno alcanzaba a hacer mientras el profesor hablaba, y lo que no quedaba en el cuaderno, en la práctica, no existía. Después llegaron las grabadoras, y con ellas una pequeña revolución silenciosa: ya no hacía falta escribirlo todo, porque la voz del profesor quedaba guardada y se podía volver a escuchar. Escribir pasó, casi sin que nos diéramos cuenta, a un segundo plano.
