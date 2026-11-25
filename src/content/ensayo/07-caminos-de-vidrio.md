@@ -5,7 +5,7 @@ entrega: 7
 parte: "Tercera parte: Los bordes"
 lectura: "8 minutos"
 imagen: "/img/entregas/07-caminos-de-vidrio.png"
-borrador: true
+borrador: false
 fecha: "2026-11-25"
 ---
 
